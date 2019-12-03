@@ -254,7 +254,7 @@ void EcoCityMoto::SetIdUltimo(unsigned nuevoIdUltimo){
 }
 
 
-Cliente* EcoCityMoto::buscarCliente(string dni){//ToDo: Cambiar al final de la hash
+Cliente* EcoCityMoto::buscarCliente(string dni){
     Cliente *elCliente;
     bool encontrado=false;
     encontrado=clientes.buscar(dni,elCliente);
@@ -370,7 +370,7 @@ vector<Moto*> EcoCityMoto::localizaMotosSinBateria() {
         return vecMotos;
 }
 
-void EcoCityMoto::redispersarClientes() {//ToDo: Borrar couts
+void EcoCityMoto::redispersarClientes() {
     cout << " Factor de Carga primero: " << clientes.factorCarga() << endl;
     clientes.redispersar();
     cout << " Factor de Carga Despues: " << clientes.factorCarga() << endl;
@@ -380,7 +380,7 @@ void EcoCityMoto::borraTodosLosClientes(unsigned long borraTodosEstos){
     vector<string> vectorDeClientes=getVecDNICli();
     unsigned long cliBorrados=0;
     for(cliBorrados=0;cliBorrados<borraTodosEstos;cliBorrados++){
-        clientes.borrar(vectorDeClientes[cliBorrados]); //ToDo: mandar un dni
+        clientes.borrar(vectorDeClientes[cliBorrados]); 
     }
     clientes.setTamLogico(clientes.numClientes()-cliBorrados);
     cout<<"Todos los clientes han sido eliminados, "<<

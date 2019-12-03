@@ -7,6 +7,7 @@
       <itemPath>Cliente.h</itemPath>
       <itemPath>EcoCityMoto.h</itemPath>
       <itemPath>Itinerario.h</itemPath>
+      <itemPath>MallaRegular.h</itemPath>
       <itemPath>Moto.h</itemPath>
       <itemPath>THashCliente.h</itemPath>
       <itemPath>UTM.h</itemPath>
@@ -64,6 +65,8 @@
       </item>
       <item path="Itinerario.h" ex="false" tool="3" flavor2="0">
       </item>
+      <item path="MallaRegular.h" ex="false" tool="3" flavor2="0">
+      </item>
       <item path="Moto.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="Moto.h" ex="false" tool="3" flavor2="0">
@@ -112,6 +115,8 @@
       <item path="Itinerario.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="Itinerario.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="MallaRegular.h" ex="false" tool="3" flavor2="0">
       </item>
       <item path="Moto.cpp" ex="false" tool="1" flavor2="0">
       </item>

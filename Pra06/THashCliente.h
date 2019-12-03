@@ -63,7 +63,7 @@ public:
     THashCliente(const THashCliente& orig); 
     virtual ~THashCliente();
 
-    void redispersar (); //ToDo: revisar que funciona correctamente redispersar
+    void redispersar (); 
     unsigned int numClientes();
     bool esprimo(unsigned long& n);
     
