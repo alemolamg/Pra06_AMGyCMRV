@@ -27,7 +27,7 @@ THashCliente::~THashCliente() {
 
 unsigned long THashCliente::calcPrimo(unsigned long& tam) {
     unsigned long elPrimo=tam+1;
-    double ocMin=0.6,ocMax=0.7;
+    double ocMin=0.6,ocMax=0.68;
     bool encontrado=false;
     do{
         ++elPrimo;

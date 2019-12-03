@@ -46,11 +46,11 @@ Moto& Moto::operator=(const Moto& orig) {
 void Moto::seActiva(Cliente *cli){
     usadoPor=cli;
     status = Activo;
-    darAviso();
+    //darAviso();
 }
 void Moto::seDesactiva(){
     status=Bloqueado;
-    this->darAviso();
+    //this->darAviso();
     usadoPor=0;
 }
 

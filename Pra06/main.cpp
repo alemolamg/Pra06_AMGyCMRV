@@ -17,11 +17,11 @@ int main(){
     setlocale(LC_ALL,"es_ES.UTF8"); 
     srand(time(0));
     try{ 
-         int modo=0; // modo=1-> entrenar; modo=0-> ejecutar normal;
+         int modo=1; // modo=1-> entrenar; modo=0-> ejecutar normal;
          
          if(modo==1){
             //int funHash=0;
-            unsigned long tam[]={numero,numero};
+            unsigned long tam[]={numero,10580};
             //cout<<"Cargamos el archivo con el numero: "<<  <<std::endl;
             //EcoCityMoto ecoEntrena1("clientes_v2.csv","motos.txt",tam[0]);
             //EcoCityMoto ecoEntrena2("clientes_v2.csv","motos.txt",tam[1]);
