@@ -194,7 +194,7 @@ void THashCliente::redispersar() {
         }
     }
     tabla=nueva;
-    tamLogico=numClientes; //ToDo: Cambiar por tamTabla
+    tamLogico=numClientes; 
     
     cout<<"Nueva tabla terminada"<<endl;
     }
