@@ -24,6 +24,7 @@ private:
     void cargarMotos(string fileNameMotos);
     void cargarClientes(const string &fileNameClientes,int funHash);
     void crearItinerarios(int num,const UTM &min,const UTM &max);
+    void GuardarMotosItinerarios(const string& file);
     void guardarClientesItinerarios(const string &fileName);   
 //    THashCliente& getClientes();
     //bool nuevoCliente(Cliente& nuevoCli);

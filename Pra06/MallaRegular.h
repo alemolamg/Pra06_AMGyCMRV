@@ -20,6 +20,8 @@ class Casilla{
     friend class MallaRegular<T>;
     public:
         Casilla(): puntos(){};
+        Casilla(const Casilla& orig): puntos(orig.puntos){};
+        ~Casilla();
 };        
         
 template <class T>
@@ -36,8 +38,7 @@ public:
     T* buscarDato(float x,float y, const T &dato);
     bool borrarDato(float x,float y, const T &dato);
     
-    
-    
+       
 private:
     
     

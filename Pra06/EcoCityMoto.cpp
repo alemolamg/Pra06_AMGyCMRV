@@ -23,7 +23,9 @@ EcoCityMoto::EcoCityMoto(const EcoCityMoto& orig):
 EcoCityMoto::~EcoCityMoto() {
     
     guardarClientesItinerarios("prueba.txt");
+    
     std::cout<<"Guardado archivo correctamente"<<std::endl;
+    
 }
 
 
@@ -322,7 +324,6 @@ void EcoCityMoto::guardarClientesItinerarios(const string& fileName) {
     ofstream fs;                   
     fs.open(fileName,ofstream::trunc);
     
-    
     if(fs.good()){
         vector<string> vecCli=getVecDNICli();
         Cliente* pclient;
@@ -385,4 +386,38 @@ void EcoCityMoto::borraTodosLosClientes(unsigned long borraTodosEstos){
     clientes.setTamLogico(clientes.numClientes()-cliBorrados);
     cout<<"Todos los clientes han sido eliminados, "<<
             "Tam nuevo es: "<< clientes.numClientes()<<std::endl;
+}
+
+void EcoCityMoto::GuardarMotosItinerarios(const string& file) { //ToDo: hacer para las motos
+    /*ofstream fs;                   
+    fs.open(file,ofstream::trunc);
+    
+    if(fs.good()){
+        
+        //vector<string> vecCli=getVecDNICli();
+        //Cliente* pclient;
+        fs << "id;status;posicionUTM;porcentajeBateria" << endl;
+        int i=0; 
+        while (i<motos.size()){            
+            //bool p=clientes.buscar(vecCli[i],pclient);
+            //list<Itinerario> r=pclient->getRutas();
+//            list<Itinerario>::iterator it2=motos(i);
+            fs << motos(i)-> <<";"<< pclient->GetPass() <<";"<< pclient->GetNombre() <<";"<<
+                  pclient->GetDireccion() <<";"<< pclient->getPosicion().GetLatitud() <<";"<<
+                  pclient->getPosicion().GetLongitud() <<";"<< pclient->getRutas().size() << endl;
+            while (it2!=r.end()){
+                fs << it2->GetId() <<";"<< it2->GetInicio().GetLatitud() <<";"<<
+                   it2->GetInicio().GetLongitud() <<";"<< it2->GetFin().GetLatitud() <<";"<<
+                   it2->GetFin().GetLongitud() <<";"<< it2->GetFecha().verDia() <<";"<<
+                   it2->GetFecha().verMes() <<";"<< it2->GetFecha().verAnio() <<";"<<
+                   it2->GetFecha().verHora() <<";"<< it2->GetFecha().verMin() <<";"<< 
+                   it2->GetMinutos() <<";"<< it2->GetVehiculo()->getId() << endl;
+                it2++;
+            }
+            i++;            
+        }    
+        fs.close(); //Cerramos el flujo de entrada         
+    }else{
+        std::cerr<<"No se puede crear el fichero"<<endl;
+    } */
 }
