@@ -38,7 +38,11 @@ class MallaRegular {
     
 public:
     MallaRegular(float minimoX, float maximoX, float minimoY, float maximoY, float tamCasillaX, float tamCasillay);
+    MallaRegular(float minimoX, float maximoX, float minimoY, float maximoY);
     MallaRegular(const MallaRegular& orig);
+    
+    
+    ///-------Sin Terminar -------------///
     virtual ~MallaRegular();
     
     void insertarDato(float x,float y, const T &dato);
@@ -56,14 +60,21 @@ private:
     
 };
 
+
 MallaRegular<T>::MallaRegular(float minimoX, float maximoX, float minimoY, float maximoY, float tamCasillaX, float tamCasillay):
     xMin(minimoX), xMax(maximoX), yMin(minimoY), yMax(maximoY), tamCasX(tamCasillaX),tamCasY(tamCasillay){};
+
+
+MallaRegular<T>::MallaRegular(float minimoX, float maximoX, float minimoY, float maximoY):
+    xMin(minimoX), xMax(maximoX), yMin(minimoY), yMax(maximoY),
+        tamCasX(xMax/(xMax-xMin)), tamCasY(yMax/(yMax-yMin)){}
     
 MallaRegular<T>::MallaRegular(const MallaRegular& orig): xMin(orig.xMin), xMax(orig.xMax), yMin(orig.yMin), yMax(orig.yMax),
         tamCasX(orig.tamCasX),tamCasY(orig.tamCasY){};
 
 T MallaRegular<T>::buscarDato(float x, float y, const T& dato){
     Casilla<T> *posC = obtenerCasilla(x,y);
+    return *posC;
     
 }
 
