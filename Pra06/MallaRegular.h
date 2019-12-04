@@ -38,7 +38,7 @@ class MallaRegular {
     
 public:
     MallaRegular(float minimoX, float maximoX, float minimoY, float maximoY, float tamCasillaX, float tamCasillay);
-    MallaRegular(float minimoX, float maximoX, float minimoY, float maximoY);
+    MallaRegular(float minimoX, float maximoX, float minimoY, float maximoY); // Calcula un tamaño para X e Y automaticamente
     MallaRegular(const MallaRegular& orig);
     
     
