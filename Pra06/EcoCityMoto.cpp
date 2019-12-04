@@ -297,7 +297,7 @@ void EcoCityMoto::crearItinerarios(int num, const UTM& min, const UTM& max) {
     int i=0;
     while (i<vectorClientes.size()) {
     //while (i<clientes.getVectorDNI().size()) {
-        bool encon=clientes.buscar(vectorClientes[i],aux); //ToDo: cambiar a variable interna
+        bool encon=clientes.buscar(vectorClientes[i],aux);
         if (encon){
         aux->crearItinerario (num,idUltimo,min,max);
         idUltimo=idUltimo+num;

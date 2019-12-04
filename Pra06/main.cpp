@@ -22,10 +22,7 @@ int main(){
          if(modo==1){
             //int funHash=0;
             unsigned long tam[]={numero,10580};
-            //cout<<"Cargamos el archivo con el numero: "<<  <<std::endl;
-            //EcoCityMoto ecoEntrena1("clientes_v2.csv","motos.txt",tam[0]);
-            //EcoCityMoto ecoEntrena2("clientes_v2.csv","motos.txt",tam[1]);
-             
+            
             for(int i=0;i<2;i++){ //Cambia el Tamaño
                 cout<<"\n\nCargamos con el numero "<<tam[i]<<std::endl;
                 for(int funHash=0;funHash<3;funHash++){ //Recorre las funciones hash
@@ -76,9 +73,9 @@ int main(){
                     pCli->UltimoItinerario().GetFin().GetLongitud() << std::endl;
             
             //7) mostrar en el display estado moto
-            //motoCerCli->darAviso();
-            /// La función Moto::darAviso se ejecuta internamente en el Cliente::terminarTrayecto, 
-            /// asi no hace falta mostrarlo desde el main, porque el cliente ya no tiene la moto
+                //motoCerCli->darAviso();
+                /// La función Moto::darAviso se ejecuta internamente en el Cliente::terminarTrayecto, 
+                /// asi no hace falta mostrarlo desde el main, porque el cliente ya no tiene la moto
             
             //8) Borrar el cliente
             if(eco.eliminarCliente(clienteA.GetDni()))
