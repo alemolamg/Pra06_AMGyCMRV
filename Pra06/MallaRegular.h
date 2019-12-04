@@ -8,6 +8,9 @@
 #define MALLAREGULAR_H
 
 #include <list>
+#include <inttypes.h>
+#include <vector>
+#include <math.h>
 
 
 
@@ -22,15 +25,19 @@ class Casilla{
         Casilla(): puntos(){};
         Casilla(const Casilla& orig): puntos(orig.puntos){};
         ~Casilla();
+        
+        
 };        
         
 template <class T>
 class MallaRegular {  
-    float xMin,xMax,yMin,yMax;
-    
+    float xMin,xMax,yMin,yMax, tamCasX, tamCasY; //ToDo: editar para no ser igual
+    Casilla<T> *obtenerCasilla(float x, float y);
+    std::vector<std::vector<Casilla<T> > >mallaR;
+    unsigned numElementosTotales;
     
 public:
-    MallaRegular();
+    MallaRegular(float minimoX, float maximoX, float minimoY, float maximoY, float tamCasillaX, float tamCasillay);
     MallaRegular(const MallaRegular& orig);
     virtual ~MallaRegular();
     
@@ -38,13 +45,27 @@ public:
     T* buscarDato(float x,float y, const T &dato);
     bool borrarDato(float x,float y, const T &dato);
     
+    unsigned numElementos();
+    T buscarCercano (float x, float y);
+    bool fueraAmbito(float x, float y);
+    unsigned maxElementosPorCelda();
+    float mediaElementosPorCelda();
        
 private:
     
     
-    
-
 };
+
+MallaRegular<T>::MallaRegular(float minimoX, float maximoX, float minimoY, float maximoY, float tamCasillaX, float tamCasillay):
+    xMin(minimoX), xMax(maximoX), yMin(minimoY), yMax(maximoY), tamCasX(tamCasillaX),tamCasY(tamCasillay){};
+    
+MallaRegular<T>::MallaRegular(const MallaRegular& orig): xMin(orig.xMin), xMax(orig.xMax), yMin(orig.yMin), yMax(orig.yMax),
+        tamCasX(orig.tamCasX),tamCasY(orig.tamCasY){};
+
+T MallaRegular<T>::buscarDato(float x, float y, const T& dato){
+    Casilla<T> *posC = obtenerCasilla(x,y);
+    
+}
 
 #endif /* MALLAREGULAR_H */
 
