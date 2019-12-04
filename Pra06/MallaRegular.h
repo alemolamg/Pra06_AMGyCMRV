@@ -75,8 +75,13 @@ MallaRegular<T>::MallaRegular(const MallaRegular& orig): xMin(orig.xMin), xMax(o
 T MallaRegular<T>::buscarDato(float x, float y, const T& dato){
     Casilla<T> *posC = obtenerCasilla(x,y);
     return *posC;
+}
+
+
+Casilla<T>* MallaRegular<T>::obtenerCasilla(float x, float y){
     
 }
+
 
 #endif /* MALLAREGULAR_H */
 
