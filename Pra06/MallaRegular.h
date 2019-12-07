@@ -11,6 +11,7 @@
 #include <inttypes.h>
 #include <vector>
 #include <math.h>
+#include <time.h>
 
 
 
@@ -19,14 +20,49 @@ class MallaRegular;
     
 template <class T>
 class Casilla{
-    std::list<T> puntos;
     friend class MallaRegular<T>;
+    std::list<T> puntos;
+    
     public:
         Casilla(): puntos(){};
         Casilla(const Casilla& orig): puntos(orig.puntos){};
         ~Casilla();
+        unsigned get_tam(){return puntos.size();};
+        void insertar(const T &dato){ puntos.push_back(dato);};
         
+        T* buscar (const T &dato){
+            typename std::list<T>::iterator ite;
+            for(ite=puntos.begin(); ite!=puntos.end();ite++){
+                if(*ite == dato)
+                    return &(*ite);
+            }
+        }
         
+        bool borrar (T &dato){
+            //TIPO 2 
+            /*typename std::list<T>::iterator ite= puntos.begin();
+            for(; ite!=puntos.end();++ite)
+                if(*ite==dato){
+                    puntos.erase(ite);
+                    return true;
+                }
+            */
+            
+            T *elDato=buscar(dato);
+            if(elDato){
+                puntos.erase(elDato);
+                return true;
+            }
+            return false;
+        }
+               
+//        typename std::list<T>::iterator begin(){
+//            return puntos.begin();
+//        }
+//        
+//        typename std::list<T>::iterator end(){
+//            return puntos.end();
+//        }
 };        
         
 template <class T>

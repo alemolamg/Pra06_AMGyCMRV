@@ -13,8 +13,11 @@
 
 int main(){    
     unsigned long primo,numero=10000;
-      
-    setlocale(LC_ALL,"es_ES.UTF8"); 
+    float max=7, min=3;
+    float tamX=max/(max-min);
+    
+    cout<<tamX<<std::endl;
+    /*setlocale(LC_ALL,"es_ES.UTF8"); 
     srand(time(0));
     try{ 
          int modo=1; // modo=1-> entrenar; modo=0-> ejecutar normal;
@@ -109,6 +112,6 @@ int main(){
             std::cerr << e.what() << std::endl;
      } 
           
-    return 0;
+    return 0;*/
     
 }
