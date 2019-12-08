@@ -20,39 +20,31 @@ class MallaRegular;
     
 template <class T>
 class Casilla{
-    friend class MallaRegular<T>;
     std::list<T> puntos;
     
     public:
+        friend class MallaRegular<T>;
         Casilla(): puntos(){};
         Casilla(const Casilla& orig): puntos(orig.puntos){};
         ~Casilla();
         unsigned numCasillas(){return puntos.size();};
-        void insertar(const T &dato){ puntos.push_back(dato);};
+        void insertar(const T &dato){ puntos.push_back(dato); }
         
-        T* buscar (const T &dato){
-            typename std::list<T>::iterator ite;
-            for(ite=puntos.begin(); ite!=puntos.end();ite++){
+        T* buscar (const T &dato){ 
+            typename std::list<T>::iterator ite=puntos.begin();
+            for(; ite!=puntos.end();ite++){
                 if(*ite == dato)
                     return &(*ite);
             }
         }
         
-        bool borrar (T &dato){
-            //TIPO 2 
-            /*typename std::list<T>::iterator ite= puntos.begin();
-            for(; ite!=puntos.end();++ite)
-                if(*ite==dato){
-                    puntos.erase(ite);
+        bool borrar (T &dato){  
+            typename std::list<T>::iterator it= puntos.begin();
+            for(; it!=puntos.end();++it)
+                if(*it==dato){
+                    puntos.erase(it);
                     return true;
                 }
-            */
-            
-            T *elDato=buscar(dato);
-            if(elDato){
-                puntos.erase(elDato);
-                return true;
-            }
             return false;
         }
                
@@ -67,7 +59,7 @@ class Casilla{
         
 template <class T>
 class MallaRegular {  
-    float xMin,xMax,yMin,yMax, tamCasX, tamCasY; //ToDo: editar para no ser igual
+    float xMin,xMax,yMin,yMax, tamCasX, tamCasY; 
     Casilla<T> *obtenerCasilla(float x, float y);
     std::vector<std::vector<Casilla<T> > >mallaR;
     unsigned numElementosTotales;
@@ -81,9 +73,9 @@ public:
     ///-------Sin Terminar -------------///
     virtual ~MallaRegular();
     
-    void insertarDato(float x,float y, const T &dato);
-    T* buscarDato(float x,float y, const T &dato);
-    bool borrarDato(float x,float y, const T &dato);
+    void insertar(float x,float y, const T &dato);
+    T* buscar(float x,float y, const T &dato);
+    bool borrar(float x,float y, const T &dato);
     
     unsigned numElementos();
     T buscarCercano (float x, float y);
