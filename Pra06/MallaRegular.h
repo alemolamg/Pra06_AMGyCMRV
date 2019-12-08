@@ -27,7 +27,7 @@ class Casilla{
         Casilla(): puntos(){};
         Casilla(const Casilla& orig): puntos(orig.puntos){};
         ~Casilla();
-        unsigned get_tam(){return puntos.size();};
+        unsigned numCasillas(){return puntos.size();};
         void insertar(const T &dato){ puntos.push_back(dato);};
         
         T* buscar (const T &dato){
