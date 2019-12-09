@@ -167,6 +167,7 @@ bool MallaRegular<T>::fueraAmbito(float x, float y){ //ToDo: comprobar que funci
             }
         }
     }
+    return true;
 }
 
 #endif /* MALLAREGULAR_H */
