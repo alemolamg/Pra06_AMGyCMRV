@@ -24,7 +24,7 @@ public:
     }
      
     double distancia(const UTM &utm){
-        return sqrt(pow(utm.latitud-this->latitud,2)+pow(utm.longitud-this->longitud,2));
+          return sqrt(pow(utm.latitud-this->latitud,2)+pow(utm.longitud-this->longitud,2));
     }
     
     virtual ~UTM(){};
