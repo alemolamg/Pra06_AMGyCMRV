@@ -23,6 +23,7 @@ class Cliente {
     std::list<Itinerario> rutas;
     EcoCityMoto *acceso;
     std::string display;
+    int puntos;
     
 public:
     
@@ -61,6 +62,13 @@ public:
     std::string getDisplay() const;
     
     void mostrarMensaje(string texto);
+    void decrementapunto();
+    void aumentapunto();
+    //Faltan por hacer//
+    
+    Moto* getMiMoto();
+    void puntoRecargaMasCercano();
+    void RecargarMoto();
     
     
 };
