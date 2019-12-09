@@ -48,13 +48,6 @@ class Casilla{
             return false;
         }
                
-//        typename std::list<T>::iterator begin(){
-//            return puntos.begin();
-//        }
-//        
-//        typename std::list<T>::iterator end(){
-//            return puntos.end();
-//        }
 };        
         
 template <class T>
@@ -73,14 +66,14 @@ public:
     T* buscar(float x,float y, const T &dato);
     bool borrar(float x,float y, const T &dato);
     
-    unsigned numElementos();    
+    unsigned numElementos();
+unsigned maxElementosPorCelda();    
     
     ///-------Sin Terminar -------------///
     virtual ~MallaRegular();
     
     T buscarCercano (float x, float y);
     bool fueraAmbito(float x, float y);
-    unsigned maxElementosPorCelda();
     float mediaElementosPorCelda();
        
 private:
@@ -144,19 +137,37 @@ T MallaRegular<T>::buscarCercano(float x, float y){
 
 template <class T>
 unsigned MallaRegular<T>::maxElementosPorCelda(){
-    unsigned maximo=0;
+    int num=0,maximo=0;    
    
-    for (float i=xMin; i<xMax; i=i+tamCasillaX){
-        for (float j=yMin; j<yMax; j=j+tamCasillaY){     
-       
+    for (float i=xMin; i<xMax; i+=tamCasillaX){
+        for (float j=yMin; j<yMax; j=j+tamCasillaY){
             Casilla<T> *c = obtenerCasilla(i,j);
-            int tam=c->numPuntosCasilla();
-         
-            if (tam>maximo) 
-                maximo=tam;
+            num=c->numPuntosCasilla();
+            if (num>maximo) 
+                maximo=num;
             }                   
     }
     return maximo;
 }
+
+template <class T>
+bool MallaRegular<T>::fueraAmbito(float x, float y){
+    for(unsigned i=x-tamCasillaX;i<x+tamCasillaX;i+=tamCasillaX){
+        for(unsigned j=y-tamCasillaY;j<y+tamCasillaY;j+=tamCasillaY){
+            if( (i<=xMax && i>=xMin) && (j<=yMax && j>=yMin) ){
+                Casilla<T> *cas=obtenerCasilla(i,j);
+                if(cas->puntos.size()){
+                    typename std::list<T>::iterator ite;
+                    for (ite=cas->puntos.begin();ite!= cas->puntos.end();++ite){
+                         if ((*ite).getX()>=x-tamCasillaX && (*ite).getX()<=x+tamCasillaX
+                                 && (*ite).getY()>=y-tamCasillaY && (*ite).getY()<=y+tamCasillaY)
+                                return false;
+                    }
+                }
+            }
+        }
+    }
+}
+
 #endif /* MALLAREGULAR_H */
 
