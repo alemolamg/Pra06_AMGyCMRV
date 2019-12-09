@@ -59,7 +59,7 @@ class Casilla{
         
 template <class T>
 class MallaRegular {  
-    float xMin,xMax,yMin,yMax, tamCasX, tamCasY; 
+    float xMin,xMax,yMin,yMax, tamCasillaX, tamCasillaY; 
     Casilla<T> *obtenerCasilla(float x, float y);
     std::vector<std::vector<Casilla<T> > >mallaR;
     unsigned numElementosTotales;
@@ -90,24 +90,26 @@ private:
 
 
 MallaRegular<T>::MallaRegular(float minimoX, float maximoX, float minimoY, float maximoY, float tamCasillaX, float tamCasillay):
-    xMin(minimoX), xMax(maximoX), yMin(minimoY), yMax(maximoY), tamCasX(tamCasillaX),tamCasY(tamCasillay){};
+    xMin(minimoX), xMax(maximoX), yMin(minimoY), yMax(maximoY), tamCasillaX(tamCasillaX),tamCasillaY(tamCasillay){};
 
 
 MallaRegular<T>::MallaRegular(float minimoX, float maximoX, float minimoY, float maximoY):
     xMin(minimoX), xMax(maximoX), yMin(minimoY), yMax(maximoY),
-        tamCasX(xMax/(xMax-xMin)), tamCasY(yMax/(yMax-yMin)){}
+        tamCasillaX(xMax/(xMax-xMin)), tamCasillaY(yMax/(yMax-yMin)){}
     
 MallaRegular<T>::MallaRegular(const MallaRegular& orig): xMin(orig.xMin), xMax(orig.xMax), yMin(orig.yMin), yMax(orig.yMax),
-        tamCasX(orig.tamCasX),tamCasY(orig.tamCasY){};
+        tamCasillaX(orig.tamCasillaX),tamCasillaY(orig.tamCasillaY){};
 
-T MallaRegular<T>::buscarDato(float x, float y, const T& dato){
+T MallaRegular<T>::buscar(float x, float y, const T& dato){
     Casilla<T> *posC = obtenerCasilla(x,y);
     return *posC;
 }
 
 
 Casilla<T>* MallaRegular<T>::obtenerCasilla(float x, float y){
-    
+    int numX=(x-xMin)/tamCasillaX;
+    int numY=(y-yMin)/tamCasillaY;
+    return &mallaR[numX][numY];
 }
 
 
