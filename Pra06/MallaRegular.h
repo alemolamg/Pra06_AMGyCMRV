@@ -1,5 +1,4 @@
-/* 
- * File:   MallaRegular.h
+/* File:   MallaRegular.h
  * Author: Alemol
  * Created on 3 de diciembre de 2019, 12:26
  */
@@ -52,13 +51,14 @@ class Casilla{
         
 template <class T>
 class MallaRegular {  
-    float xMin,xMax,yMin,yMax, tamCasillaX, tamCasillaY,tamLogico; 
+    float xMin,xMax,yMin,yMax, tamCasillaX, tamCasillaY,tamLogico,numDivX,numDivY; //ToDo:: gestionar numDivisiones correctamente
     Casilla<T> *obtenerCasilla(float x, float y);
     std::vector<std::vector<Casilla<T> > >mallaR;
     unsigned numElementosTotales;
     
 public:
-    MallaRegular(float minimoX, float maximoX, float minimoY, float maximoY, float tamCasillaX, float tamCasillay);
+    MallaRegular(float minimoX, float maximoX, float minimoY, float maximoY,
+            float tamCasillaX, float tamCasillay,float numDivisionesX,float numDivisionesY);//ToDo: Tenemos que calcular el numero divisiones en el constructor, está por hacer
     MallaRegular(float minimoX, float maximoX, float minimoY, float maximoY); // Calcula un tamaño para X e Y automaticamente
     MallaRegular(const MallaRegular& orig);
     
@@ -67,23 +67,20 @@ public:
     bool borrar(float x,float y, const T &dato);
     
     unsigned numElementos();
-unsigned maxElementosPorCelda();    
-    
-    ///-------Sin Terminar -------------///
-    virtual ~MallaRegular();
-    
-    T buscarCercano (float x, float y);
+    unsigned maxElementosPorCelda(); 
     bool fueraAmbito(float x, float y);
+    T buscarCercano (float x, float y);
     float mediaElementosPorCelda();
-       
-private:
     
+    ///-------Sin Terminar -----------///
+    virtual ~MallaRegular();
+      
     
 };
 
 template <class T>
-MallaRegular<T>::MallaRegular(float minimoX, float maximoX, float minimoY, float maximoY, float tamCasillaX, float tamCasillay):
-    xMin(minimoX), xMax(maximoX), yMin(minimoY), yMax(maximoY), tamCasillaX(tamCasillaX),tamCasillaY(tamCasillay),tamLogico(0){};
+MallaRegular<T>::MallaRegular(float minimoX, float maximoX, float minimoY, float maximoY, float tamCasillaX, float tamCasillay,float numDivisionesX,float numDivisionesY):
+    xMin(minimoX), xMax(maximoX), yMin(minimoY), yMax(maximoY), tamCasillaX(tamCasillaX),tamCasillaY(tamCasillay),tamLogico(0),numDivX(numDivisionesX),numDivY(numDivisionesY){};
 
     
 template <class T>
@@ -132,7 +129,46 @@ unsigned MallaRegular<T>::numElementos(){
 
 template <class T>
 T MallaRegular<T>::buscarCercano(float x, float y){
+    T cercano;
+    double distancia=99999999;
+    Casilla<T> *cas;
+    int p=numDivX;
     
+    for (int k=1; k<numDivX; k++){
+        int cont=0;     
+        for (float i=x-(tamCasillaX*k); i<x+(tamCasillaX*k); i=i+tamCasillaX){
+            for (float j=y-(tamCasillaY*k); j<y+(tamCasillaY*k); j=j+tamCasillaY){
+                if (i>=xMin && i<=xMax && j>=yMin && j<=yMax){
+                    //typename std::list<T>::iterator it;
+                    cas = obtenerCasilla(i,j);
+                    cont+=cas->puntos.size();
+                }
+            }
+        }
+        if (cont>0){
+            p=k+1;
+            break;
+        }
+    }
+        
+        for (float i=x-(tamCasillaX*p); i<x+(tamCasillaX*p); i=i+tamCasillaX){
+            for (float j=y-(tamCasillaY*p); j<y+(tamCasillaY*p); j=j+tamCasillaY){
+                if (i>=xMin && i<=xMax && j>=yMin && j<=yMax){
+                    typename std::list<T>::iterator it;
+                    cas = obtenerCasilla(i,j);
+
+                    for (it=cas->puntos.begin();it!=cas->puntos.end();it++){
+                        double d=sqrt(pow((*it).getX()-x,2)+pow((*it).getY()-y,2));
+                        if (d<distancia){
+                            cercano=*it;
+                            distancia=d;
+                        }
+                    }
+                }
+            }
+        }         
+ 
+    return cercano;
 }
 
 template <class T>
@@ -168,6 +204,12 @@ bool MallaRegular<T>::fueraAmbito(float x, float y){ //ToDo: comprobar que funci
         }
     }
     return true;
+}
+
+template <class T>
+float MallaRegular<T>::mediaElementosPorCelda(){
+    float media= (float)numElementos()/(numDivX*numDivY);
+    return media;
 }
 
 #endif /* MALLAREGULAR_H */
