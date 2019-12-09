@@ -151,7 +151,7 @@ unsigned MallaRegular<T>::maxElementosPorCelda(){
 }
 
 template <class T>
-bool MallaRegular<T>::fueraAmbito(float x, float y){
+bool MallaRegular<T>::fueraAmbito(float x, float y){ //ToDo: comprobar que funciona
     for(unsigned i=x-tamCasillaX;i<x+tamCasillaX;i+=tamCasillaX){
         for(unsigned j=y-tamCasillaY;j<y+tamCasillaY;j+=tamCasillaY){
             if( (i<=xMax && i>=xMin) && (j<=yMax && j>=yMin) ){
