@@ -16,7 +16,7 @@
 
 #include "UTM.h"
 
-
+//Prueba para que se suba a github//
 class PuntoRecarga {
 public:
     PuntoRecarga(std::string _id,double lat=0,double lon=0):
