@@ -27,7 +27,7 @@ class Casilla{
         Casilla(): puntos(){};
         Casilla(const Casilla& orig): puntos(orig.puntos){};
         ~Casilla();
-        unsigned numCasillas(){return puntos.size();};
+        unsigned numPuntosCasilla(){return puntos.size();};
         void insertarC(const T &dato){ puntos.push_back(dato); }
         
         T* buscarC (const T &dato){ 
@@ -69,15 +69,15 @@ public:
     MallaRegular(float minimoX, float maximoX, float minimoY, float maximoY); // Calcula un tamaño para X e Y automaticamente
     MallaRegular(const MallaRegular& orig);
     
-    
-    ///-------Sin Terminar -------------///
-    virtual ~MallaRegular();
-    
     void insertar(float x,float y, const T &dato);
     T* buscar(float x,float y, const T &dato);
     bool borrar(float x,float y, const T &dato);
     
-    unsigned numElementos();
+    unsigned numElementos();    
+    
+    ///-------Sin Terminar -------------///
+    virtual ~MallaRegular();
+    
     T buscarCercano (float x, float y);
     bool fueraAmbito(float x, float y);
     unsigned maxElementosPorCelda();
@@ -132,6 +132,31 @@ bool MallaRegular<T>::borrar(float x, float y, const T& dato){
     return false;
 }
 
+template <class T>
+unsigned MallaRegular<T>::numElementos(){
+    return tamLogico;
+}
 
+template <class T>
+T MallaRegular<T>::buscarCercano(float x, float y){
+    
+}
+
+template <class T>
+unsigned MallaRegular<T>::maxElementosPorCelda(){
+    unsigned maximo=0;
+   
+    for (float i=xMin; i<xMax; i=i+tamCasillaX){
+        for (float j=yMin; j<yMax; j=j+tamCasillaY){     
+       
+            Casilla<T> *c = obtenerCasilla(i,j);
+            int tam=c->numPuntosCasilla();
+         
+            if (tam>maximo) 
+                maximo=tam;
+            }                   
+    }
+    return maximo;
+}
 #endif /* MALLAREGULAR_H */
 
