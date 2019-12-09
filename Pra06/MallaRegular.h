@@ -102,8 +102,8 @@ template <class T>
 MallaRegular<T>::MallaRegular(const MallaRegular& orig): xMin(orig.xMin), xMax(orig.xMax), yMin(orig.yMin), yMax(orig.yMax),
         tamCasillaX(orig.tamCasillaX),tamCasillaY(orig.tamCasillaY),tamLogico(orig.tamLogico){};
 
-        template <class T>
-T MallaRegular<T>::buscar(float x, float y, const T& dato){
+template <class T>
+T* MallaRegular<T>::buscar(float x, float y, const T& dato){
     Casilla<T> *posC = obtenerCasilla(x,y);
     return *posC;
 }
@@ -120,6 +120,16 @@ void MallaRegular<T>::insertar(float x, float y, const T& dato){
     Casilla<T> *cas=obtenerCasilla(x,y);
     cas->insertarC(dato);
     tamLogico++;
+}
+
+template <class T>
+bool MallaRegular<T>::borrar(float x, float y, const T& dato){
+    Casilla<T> *cas=obtenerCasilla(x,y);
+    if(cas->borrarC(dato)){
+        tamLogico--;
+        return true;
+    }
+    return false;
 }
 
 
