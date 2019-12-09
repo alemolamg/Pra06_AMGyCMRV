@@ -12,8 +12,6 @@
 #include <math.h>
 #include <time.h>
 
-
-
 template <class T>
 class MallaRegular;
     
@@ -211,6 +209,8 @@ float MallaRegular<T>::mediaElementosPorCelda(){
     float media= (float)numElementos()/(numDivX*numDivY);
     return media;
 }
+
+virtual MallaRegular<T>::~MallaRegular(){}
 
 #endif /* MALLAREGULAR_H */
 
