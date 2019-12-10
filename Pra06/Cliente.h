@@ -60,11 +60,11 @@ public:
     std::string getDisplay() const;
     
     void mostrarMensaje(string texto);
+    Moto* getMiMoto();
     void decrementapunto();
     void aumentapunto();
     //Faltan por hacer//
     
-    Moto* getMiMoto();
     void puntoRecargaMasCercano();
     void RecargarMoto();
     
