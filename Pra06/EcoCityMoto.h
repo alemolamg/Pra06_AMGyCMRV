@@ -28,9 +28,7 @@ private:
     void cargarClientes(const string &fileNameClientes,int funHash);
     void crearItinerarios(int num,const UTM &min,const UTM &max);
     void GuardarMotosItinerarios(const string& file); //ToDo: hacer, no está hecho nada
-    void guardarClientesItinerarios(const string &fileName);   
-//    THashCliente& getClientes();
-    bool nuevoCliente(Cliente& nuevoCli);
+    void guardarClientesItinerarios(const string &fileName);
     vector<string> getVecDNICli();
     
     
@@ -48,6 +46,7 @@ public:
     void setMotos(vector<Moto> motos);
     
     Cliente* buscarCliente(string dni);
+    bool nuevoCliente(Cliente& nuevoCli);
     bool eliminarCliente(std::string borrameid);
     bool proPracticaClientes();
     void borraTodosLosClientes(unsigned long borraTodosEstos=1000);
