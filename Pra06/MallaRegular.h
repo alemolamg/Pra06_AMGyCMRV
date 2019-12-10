@@ -23,7 +23,7 @@ class Casilla{
         friend class MallaRegular<T>;
         Casilla(): puntos(){};
         Casilla(const Casilla& orig): puntos(orig.puntos){};
-        ~Casilla();
+        ~Casilla(){};
         unsigned numPuntosCasilla(){return puntos.size();};
         void insertarC(const T &dato){ puntos.push_back(dato); }
         
@@ -148,8 +148,8 @@ T MallaRegular<T>::buscarCercano(float x, float y){
         }
     }
         
-        for (float i=x-(tamCasillaX*p); i<x+(tamCasillaX*p); i=i+tamCasillaX){
-            for (float j=y-(tamCasillaY*p); j<y+(tamCasillaY*p); j=j+tamCasillaY){
+        for (float i=x-(tamCasillaX); i<x+(tamCasillaX); i+=tamCasillaX){
+            for (float j=y-(tamCasillaY); j<y+(tamCasillaY); j=j+tamCasillaY){
                 if (i>=xMin && i<=xMax && j>=yMin && j<=yMax){
                     typename std::list<T>::iterator it;
                     cas = obtenerCasilla(i,j);
