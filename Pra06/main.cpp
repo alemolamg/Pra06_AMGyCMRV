@@ -110,8 +110,8 @@ int main(){
             std::cerr << "No hay memoria suficiente para el objeto dinamico" << std::endl;     
      }catch (std::invalid_argument &e){
             std::cerr << e.what() << std::endl;
-     } 
+     } */
           
-    return 0;*/
+    return 0;
     
 }
