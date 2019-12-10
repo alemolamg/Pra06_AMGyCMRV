@@ -7,7 +7,7 @@
 #define MALLAREGULAR_H
 
 #include <list>
-#include <inttypes.h>
+//#include <inttypes.h>
 #include <vector>
 #include <math.h>
 #include <time.h>
@@ -59,7 +59,7 @@ public:
             float tamCasillaX, float tamCasillay,float numDivisionesX,float numDivisionesY);//ToDo: Tenemos que calcular el numero divisiones en el constructor, está por hacer
     MallaRegular(float minimoX, float maximoX, float minimoY, float maximoY); // Calcula un tamaño para X e Y automaticamente
     MallaRegular(const MallaRegular& orig);
-    virtual ~MallaRegular();
+    virtual ~MallaRegular(){};
     
     void insertar(float x,float y, const T &dato);
     T* buscar(float x,float y, const T &dato);
@@ -209,7 +209,7 @@ float MallaRegular<T>::mediaElementosPorCelda(){
     return media;
 }
 
-virtual MallaRegular<T>::~MallaRegular(){}
+//virtual MallaRegular<T>::~MallaRegular(){}
 
 #endif /* MALLAREGULAR_H */
 
