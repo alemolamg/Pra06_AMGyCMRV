@@ -43,20 +43,21 @@ public:
     
     vector<Moto*> localizaMotosSinBateria();
     Moto* LocMotoCercana(UTM &ubicacion);
-    void desbloqueaMoto(Moto *moto, Cliente *cli);   
-    
-//    bool nuevoCliente(Cliente& nuevoCli);
-    Cliente* buscarCliente(string dni);
-
+    void desbloqueaMoto(Moto *moto, Cliente *cli);  
     vector<Moto>& getMotos();
+    void setMotos(vector<Moto> motos);
+    
+    Cliente* buscarCliente(string dni);
     bool eliminarCliente(std::string borrameid);
     bool proPracticaClientes();
     void borraTodosLosClientes(unsigned long borraTodosEstos=1000);
-//    vector<string> getVecDNICli();
     void redispersarClientes();
+    void setClientes(THashCliente clientes);
+    THashCliente getClientes() const;
+    
     PuntoRecarga puntoRecargaCercano (Cliente &cli);
     virtual ~EcoCityMoto();
-    
+        
     ///------Sin Terminar--------//
        
 };

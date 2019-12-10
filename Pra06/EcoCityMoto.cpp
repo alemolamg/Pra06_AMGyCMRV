@@ -15,7 +15,7 @@ EcoCityMoto::EcoCityMoto(const string& fileClientes, const string& fileMotos,uns
     cargarMotos(fileMotos);
     cargarClientes(fileClientes,funcionHash);
     //ToDo: hacer aleatorios y probarlos luego
-//    Set_random(1);
+//    Set_random(8);
 //    for (int i=0; i<300; i++){
 //        stringstream ss;
 //        ss<<i;
@@ -36,6 +36,7 @@ EcoCityMoto::EcoCityMoto(const EcoCityMoto& orig):
 
 EcoCityMoto::~EcoCityMoto() {
     guardarClientesItinerarios("prueba.txt");
+//    GuardarMotosItinerarios("motos2.txt"); //no está implementado
     std::cout<<"Guardado archivo correctamente"<<std::endl;
     
 }
@@ -441,3 +442,14 @@ PuntoRecarga EcoCityMoto::puntoRecargaCercano(Cliente& cli){
     
 }
 
+void EcoCityMoto::setClientes(THashCliente clientes) {
+    this->clientes = clientes;
+}
+
+THashCliente EcoCityMoto::getClientes() const {
+    return clientes;
+}
+
+void EcoCityMoto::setMotos(vector<Moto> motos) {
+    this->motos = motos;
+}
