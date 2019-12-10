@@ -15,19 +15,23 @@ EcoCityMoto::EcoCityMoto(const string& fileClientes, const string& fileMotos,uns
     cargarMotos(fileMotos);
     cargarClientes(fileClientes,funcionHash);
     //ToDo: hacer aleatorios y probarlos luego
-//    Set_random(8);
-//    for (int i=0; i<300; i++){
-//        stringstream ss;
-//        ss<<i;
-//        UTM pos=UTM ( Randfloat(37,38),Randfloat(3,4) );
-//        PuntoRecarga pr(ss.str(),pos);
-//        puntosRec.insertarDato(pos.GetLatitud(),pos.GetLongitud(),pr);
+    
+//    int x=rand()%(10000),xx=rand()%(10000); 
+//    double y=(float) x/1000, z=(float) xx/1000;
+    Cliente cli;
+    srand(8);
+    for (int i=0; i<300; i++){
+        stringstream ss;
+        ss<<i;
+//        UTM pos=cli.creaUTMAleatorio(); //repasar como hacer aleatorios
+//        PuntoRecarga pr(ss.str(),pos); //ToDo: preguntar funcionamiento
+//        recargaPuntos.insertar(pos.GetLatitud(),pos.GetLongitud(),pr);
 //        cout << "X: " << pos.GetLatitud() << "Y: " << pos.GetLongitud() <<endl;
-//    }
-//    cout << "******Datos Malla: " << endl;
-//    cout << "Numero de Puntos de Recarga: " << puntosRec.numElementos() << endl;
-//    cout << "maximo Puntos por celda: " << puntosRec.maxElementosPorCelda() << endl;
-//    cout << "media Puntos por celda: " << puntosRec.mediaElementosPorCelda() << endl;
+    }
+    cout << "******Datos Malla: " << endl;
+    cout << "Numero de Puntos de Recarga: " << recargaPuntos.numElementos() << endl;
+    cout << "maximo Puntos por celda: " << recargaPuntos.maxElementosPorCelda() << endl;
+    cout << "media Puntos por celda: " << recargaPuntos.mediaElementosPorCelda() << endl;
     
 }
 
