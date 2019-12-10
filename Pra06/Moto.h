@@ -8,7 +8,6 @@
 #define MOTO_H
 #include <string>
 #include "UTM.h"
-
 #include "PuntoRecarga.h"
 
 using namespace std;

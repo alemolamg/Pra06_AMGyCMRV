@@ -183,6 +183,7 @@ void Cliente::cargaItinerario(const Itinerario& iti) {
 }
 
 std::string Cliente::getDisplay() const {
+    cout<<display;
     return display;
 }
 
@@ -193,14 +194,13 @@ void Cliente::setRutas(list<Itinerario> rutaNueva) {
 void Cliente::mostrarMensaje(string texto){
     //display=" ";
     display=texto;
-    std::cout<<display<<std::endl;
 };
 
 
 Moto* Cliente::getMiMoto() {
     list<Itinerario>::iterator i=rutas.end();
-       i--;
-        return i->GetVehiculo();
+    i--;
+    return i->GetVehiculo();
     }
 
 
@@ -215,6 +215,21 @@ void Cliente::decrementapunto(){
         if(puntos<10){
             puntos++;
         }
+    }
+    
+    void Cliente::RecargarMoto(PuntoRecarga &Punto_Recarga){
+        getMiMoto()->darAviso();
+        getDisplay();
+        getMiMoto()->Recargar(&Punto_Recarga);
+        getMiMoto()->setStatus(Recargando);
+        getMiMoto()->darAviso();
+        getDisplay();
+        getMiMoto()->terminarRecarga();
+        getMiMoto()->setStatus(Bloqueado);
+        getMiMoto()->darAviso();
+        getDisplay();
+        getMiMoto()->seDesactiva();
+        
     }
 
 

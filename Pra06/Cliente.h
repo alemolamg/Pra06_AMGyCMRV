@@ -5,8 +5,8 @@
 #ifndef CLIENTE_H
 #define	CLIENTE_H
 #include <string>
-#include "UTM.h"
 #include <list>
+#include "UTM.h"
 #include "Itinerario.h"
 
 class EcoCityMoto;    
@@ -63,10 +63,11 @@ public:
     Moto* getMiMoto();
     void decrementapunto();
     void aumentapunto();
+    void RecargarMoto(PuntoRecarga &Punto_Recarga);
     //Faltan por hacer//
     
     void puntoRecargaMasCercano();
-    void RecargarMoto();
+    
     
     
 };
