@@ -19,7 +19,17 @@ public:
         id(orig.id),posicion(orig.posicion){};
     
     
-    virtual ~PuntoRecarga();
+    virtual ~PuntoRecarga(){
+    };
+    
+    PuntoRecarga& operator=(const PuntoRecarga& orig){
+    if (this!=&orig){
+        id=orig.id;
+        posicion=orig.posicion;
+    }
+    return *this;
+}
+
 
     std::string GetId() const {
         return id;
@@ -33,7 +43,7 @@ public:
         return posicion.longitud;
     }
 private:
-    std::string id="";
+    std::string id;
     UTM posicion;
 };
 #endif /* PUNTORECARGA_H */
