@@ -68,7 +68,7 @@ public:
     unsigned numElementos();
     unsigned maxElementosPorCelda(); 
     bool fueraAmbito(float x, float y);
-    T buscarCercano (float x, float y);
+    T buscarCercano (float x, float y); //ToDo: cambiar por otro
     float mediaElementosPorCelda();
     
     ///-------Sin Terminar -----------///

@@ -24,12 +24,12 @@ private:
     void cargarMotos(string fileNameMotos);
     void cargarClientes(const string &fileNameClientes,int funHash);
     void crearItinerarios(int num,const UTM &min,const UTM &max);
-    void GuardarMotosItinerarios(const string& file);
+    void GuardarMotosItinerarios(const string& file); //ToDo: hacer, no está hecho nada
     void guardarClientesItinerarios(const string &fileName);   
 //    THashCliente& getClientes();
-    //bool nuevoCliente(Cliente& nuevoCli);
+    bool nuevoCliente(Cliente& nuevoCli);
+    vector<string> getVecDNICli();
     
-
     
 public:
     EcoCityMoto(const string &fileClientes="prueba.txt",const string &fileMotos="motos.txt",unsigned long tamTabla=10000,int funcionHash=0);
@@ -42,17 +42,19 @@ public:
     Moto* LocMotoCercana(UTM &ubicacion);
     void desbloqueaMoto(Moto *moto, Cliente *cli);   
     
-    bool nuevoCliente(Cliente& nuevoCli);
+//    bool nuevoCliente(Cliente& nuevoCli);
     Cliente* buscarCliente(string dni);
 
     vector<Moto>& getMotos();
     bool eliminarCliente(std::string borrameid);
     bool proPracticaClientes();
     void borraTodosLosClientes(unsigned long borraTodosEstos=1000);
-    vector<string> getVecDNICli();
+//    vector<string> getVecDNICli();
     void redispersarClientes();
     
     virtual ~EcoCityMoto();
+    
+    ///-----Sin Terminar--------//
           
 };
 
