@@ -1,3 +1,4 @@
+
 /* File:   PuntoRecarga.h
  * Author: Cayetano
  * Created on 3 de diciembre de 2019, 12:27
