@@ -89,6 +89,15 @@ void Moto::darAviso(){
         case 1: usadoPor->mostrarMensaje("Activada");break;
         case 2: usadoPor->mostrarMensaje("SinBateria");break;
         case 3: usadoPor->mostrarMensaje("Rota");break;
+        case 4: usadoPor->mostrarMensaje("Recarga");break; 
                
     }
+}
+    
+void Moto::Recargar(PuntoRecarga *t){
+    RealizarCarga=t;
+}
+    
+void Moto::terminarRecarga(){
+    RealizarCarga=0;
 };
