@@ -196,6 +196,7 @@ void Cliente::mostrarMensaje(string texto){
     std::cout<<display<<std::endl;
 };
 
+
 Moto* Cliente::getMiMoto() {
     list<Itinerario>::iterator i=rutas.end();
     if(i!=){
@@ -203,6 +204,7 @@ Moto* Cliente::getMiMoto() {
         return i->GetVehiculo();
     }
 }
+
 
 
 void Cliente::decrementapunto(){
@@ -215,6 +217,5 @@ void Cliente::decrementapunto(){
             puntos++;
         }
     }
-    
- 
+
 

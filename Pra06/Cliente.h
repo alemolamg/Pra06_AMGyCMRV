@@ -1,5 +1,4 @@
-/* 
- * File:   Cliente.h
+/* File:   Cliente.h
  * Author: Cayetano
  * Created on 20 de septiembre de 2019, 17:17
  */  
@@ -7,7 +6,6 @@
 #define	CLIENTE_H
 #include <string>
 #include "UTM.h"
-//#include "listaD.h"
 #include <list>
 #include "Itinerario.h"
 
@@ -66,7 +64,6 @@ public:
     void decrementapunto();
     void aumentapunto();
     //Faltan por hacer//
-    
     
     void puntoRecargaMasCercano();
     void RecargarMoto();
