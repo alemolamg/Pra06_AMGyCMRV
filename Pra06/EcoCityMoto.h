@@ -10,6 +10,8 @@
 #include <vector>
 #include "Moto.h"
 #include "Cliente.h"
+#include "PuntoRecarga.h"
+#include "MallaRegular.h"
 
 using namespace std;
 
@@ -19,6 +21,7 @@ private:
     vector <Moto> motos;
     THashCliente clientes;
     vector<string> dniClientes;
+    MallaRegular<PuntoRecarga> recargaPuntos;
     
     //---FUNCIONES----------//
     void cargarMotos(string fileNameMotos);
@@ -51,11 +54,11 @@ public:
     void borraTodosLosClientes(unsigned long borraTodosEstos=1000);
 //    vector<string> getVecDNICli();
     void redispersarClientes();
-    
+    PuntoRecarga puntoRecargaCercano (Cliente &cli);
     virtual ~EcoCityMoto();
     
-    ///-----Sin Terminar--------//
-          
+    ///------Sin Terminar--------//
+       
 };
 
 #endif /* ECOCITYMOTO_H */

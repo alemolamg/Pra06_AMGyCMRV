@@ -11,19 +11,31 @@
 #include "EcoCityMoto.h"
 
 EcoCityMoto::EcoCityMoto(const string& fileClientes, const string& fileMotos,unsigned long tamTabla,int funcionHash):
-    idUltimo(0), clientes(tamTabla), motos(){
+    idUltimo(0), clientes(tamTabla), motos(),recargaPuntos(37.3, 38.4, 15, 15){
     cargarMotos(fileMotos);
     cargarClientes(fileClientes,funcionHash);
+    //ToDo: hacer aleatorios y probarlos luego
+//    Set_random(1);
+//    for (int i=0; i<300; i++){
+//        stringstream ss;
+//        ss<<i;
+//        UTM pos=UTM ( Randfloat(37,38),Randfloat(3,4) );
+//        PuntoRecarga pr(ss.str(),pos);
+//        puntosRec.insertarDato(pos.GetLatitud(),pos.GetLongitud(),pr);
+//        cout << "X: " << pos.GetLatitud() << "Y: " << pos.GetLongitud() <<endl;
+//    }
+//    cout << "******Datos Malla: " << endl;
+//    cout << "Numero de Puntos de Recarga: " << puntosRec.numElementos() << endl;
+//    cout << "maximo Puntos por celda: " << puntosRec.maxElementosPorCelda() << endl;
+//    cout << "media Puntos por celda: " << puntosRec.mediaElementosPorCelda() << endl;
 }
 
 EcoCityMoto::EcoCityMoto(const EcoCityMoto& orig):
-    idUltimo(orig.idUltimo),motos(orig.motos),clientes(orig.clientes){}
+    idUltimo(orig.idUltimo),motos(orig.motos),clientes(orig.clientes), recargaPuntos(orig.recargaPuntos){}
 
 
 EcoCityMoto::~EcoCityMoto() {
-    
     guardarClientesItinerarios("prueba.txt");
-    
     std::cout<<"Guardado archivo correctamente"<<std::endl;
     
 }
@@ -420,4 +432,12 @@ void EcoCityMoto::GuardarMotosItinerarios(const string& file) { //ToDo: hacer pa
     }else{
         std::cerr<<"No se puede crear el fichero"<<endl;
     } */
+}   
+    
+PuntoRecarga EcoCityMoto::puntoRecargaCercano(Cliente& cli){
+    PuntoRecarga pr=recargaPuntos.buscarCercano(cli.getPosicion().latitud,cli.getPosicion().longitud);
+    //pr=recargaPuntos.buscarCercano(cli.getPosicion().latitud,cli.getPosicion().longitud);
+    return pr;
+    
 }
+
