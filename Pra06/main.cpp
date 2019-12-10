@@ -17,7 +17,7 @@ int main(){
     float tamX=max/(max-min);
     
     cout<<tamX<<std::endl;
-    /*setlocale(LC_ALL,"es_ES.UTF8"); 
+    setlocale(LC_ALL,"es_ES.UTF8"); 
     srand(time(0));
     try{ 
          int modo=1; // modo=1-> entrenar; modo=0-> ejecutar normal;
@@ -110,7 +110,7 @@ int main(){
             std::cerr << "No hay memoria suficiente para el objeto dinamico" << std::endl;     
      }catch (std::invalid_argument &e){
             std::cerr << e.what() << std::endl;
-     } */
+     } 
           
     return 0;
     
