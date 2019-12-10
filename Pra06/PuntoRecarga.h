@@ -12,14 +12,24 @@
 //Prueba para que se suba a github//
 class PuntoRecarga {
 public:
-    PuntoRecarga(std::string _id,double lat=0,double lon=0):
+    PuntoRecarga(std::string _id="",double lat=0,double lon=0):
         id(_id),posicion(UTM(lat,lon)){};
         
     PuntoRecarga(const PuntoRecarga& orig):
         id(orig.id),posicion(orig.posicion){};
     
     
-    virtual ~PuntoRecarga();
+    virtual ~PuntoRecarga(){
+    };
+    
+    PuntoRecarga& operator=(const PuntoRecarga& orig){
+    if (this!=&orig){
+        id=orig.id;
+        posicion=orig.posicion;
+    }
+    return *this;
+}
+
 
     std::string GetId() const {
         return id;

@@ -5,8 +5,8 @@
 #ifndef CLIENTE_H
 #define	CLIENTE_H
 #include <string>
-#include "UTM.h"
 #include <list>
+#include "UTM.h"
 #include "Itinerario.h"
 
 class EcoCityMoto;    
@@ -27,7 +27,7 @@ public:
     
     Cliente(string _dni,string _nombre="", string _pass="", string _direccion="", double _latitud=0.0, double _longitud=0.0, EcoCityMoto *_ecoC=0):
     dni(_dni), pass(_pass), nombre(_nombre), direccion (_direccion),acceso(_ecoC),rutas() ,posicion (_latitud, _longitud){}
-    Cliente(): nombre(""), dni(""), pass(""), rutas(), acceso(0), direccion(""),display(" ") ,posicion(UTM(0.0,0.0)){};
+    Cliente(): nombre(""), dni(""), pass(""), rutas(), acceso(0), direccion(""),display(" ") ,posicion(UTM(0.0,0.0)),puntos(rand()%10){};
     
     
     Cliente(const Cliente& orig);
@@ -63,10 +63,11 @@ public:
     Moto* getMiMoto();
     void decrementapunto();
     void aumentapunto();
+    void RecargarMoto(PuntoRecarga &Punto_Recarga);
     //Faltan por hacer//
     
     void puntoRecargaMasCercano();
-    void RecargarMoto();
+    
     
     
 };
