@@ -28,6 +28,7 @@ EcoCityMoto::EcoCityMoto(const string& fileClientes, const string& fileMotos,uns
 //    cout << "Numero de Puntos de Recarga: " << puntosRec.numElementos() << endl;
 //    cout << "maximo Puntos por celda: " << puntosRec.maxElementosPorCelda() << endl;
 //    cout << "media Puntos por celda: " << puntosRec.mediaElementosPorCelda() << endl;
+    
 }
 
 EcoCityMoto::EcoCityMoto(const EcoCityMoto& orig):
@@ -406,27 +407,11 @@ void EcoCityMoto::GuardarMotosItinerarios(const string& file) { //ToDo: hacer pa
     fs.open(file,ofstream::trunc);
     
     if(fs.good()){
-        Moto* motg;
-        //vector<string> vecCli=getVecDNICli();
-        //Cliente* pclient;
         fs << "id;status;posicionUTM-lat;posicionUTM-lon;porcentajeBateria" << endl;
         int i=0; 
-        while (i<motos.size()){            
-            
-            //list<Itinerario> r=pclient->getRutas();
-//            list<Itinerario>::iterator it2=motos(i);
-            
+        while (i<motos.size()){                        
             fs <<motos[i].getId() <<";"<<motos[i].getStatus() <<";"<< motos[i].getPosicion().latitud<<
                     ";" <<motos[i].getPosicion().longitud <<";"<<motos[i].getPorcentajeBateria() <<endl;
-            /*while (it2!=r.end()){
-                fs << it2->GetId() <<";"<< it2->GetInicio().GetLatitud() <<";"<<
-                   it2->GetInicio().GetLongitud() <<";"<< it2->GetFin().GetLatitud() <<";"<<
-                   it2->GetFin().GetLongitud() <<";"<< it2->GetFecha().verDia() <<";"<<
-                   it2->GetFecha().verMes() <<";"<< it2->GetFecha().verAnio() <<";"<<
-                   it2->GetFecha().verHora() <<";"<< it2->GetFecha().verMin() <<";"<< 
-                   it2->GetMinutos() <<";"<< it2->GetVehiculo()->getId() << endl;
-                it2++;
-            }*/
             i++;            
         }    
         fs.close(); //Cerramos el flujo de entrada         
@@ -437,7 +422,6 @@ void EcoCityMoto::GuardarMotosItinerarios(const string& file) { //ToDo: hacer pa
     
 PuntoRecarga EcoCityMoto::puntoRecargaCercano(Cliente& cli){
     PuntoRecarga pr=recargaPuntos.buscarCercano(cli.getPosicion().latitud,cli.getPosicion().longitud);
-    //pr=recargaPuntos.buscarCercano(cli.getPosicion().latitud,cli.getPosicion().longitud);
     return pr;
     
 }
