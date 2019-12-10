@@ -195,3 +195,15 @@ void Cliente::mostrarMensaje(string texto){
     display=texto;
     std::cout<<display<<std::endl;
 };
+
+void Cliente::decrementapunto(){
+    if(puntos>0){
+        puntos--;
+    }
+}
+    void Cliente::aumentapunto(){
+        if(puntos<10){
+            puntos++;
+        }
+    }
+

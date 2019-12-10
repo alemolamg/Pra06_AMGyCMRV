@@ -1,5 +1,4 @@
-/* 
- * File:   Cliente.h
+/* File:   Cliente.h
  * Author: Cayetano
  * Created on 20 de septiembre de 2019, 17:17
  */  
@@ -7,7 +6,6 @@
 #define	CLIENTE_H
 #include <string>
 #include "UTM.h"
-//#include "listaD.h"
 #include <list>
 #include "Itinerario.h"
 
@@ -23,6 +21,7 @@ class Cliente {
     std::list<Itinerario> rutas;
     EcoCityMoto *acceso;
     std::string display;
+    int puntos;
     
 public:
     
@@ -61,6 +60,13 @@ public:
     std::string getDisplay() const;
     
     void mostrarMensaje(string texto);
+    void decrementapunto();
+    void aumentapunto();
+    //Faltan por hacer//
+    
+    Moto* getMiMoto();
+    void puntoRecargaMasCercano();
+    void RecargarMoto();
     
     
 };

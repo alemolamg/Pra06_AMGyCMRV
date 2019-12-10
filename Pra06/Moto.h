@@ -6,13 +6,15 @@
 
 #ifndef MOTO_H
 #define MOTO_H
-#include "UTM.h"
 #include <string>
+#include "UTM.h"
+
+#include "PuntoRecarga.h"
 
 using namespace std;
 class Cliente; 
 
-enum tipoEstado{Bloqueado,Activo,SinBateria,Rota};
+enum tipoEstado{Bloqueado,Activo,SinBateria,Rota,Recargando};
 
 
 class Moto {
@@ -40,6 +42,8 @@ public:
     void setStatus(tipoEstado status);
     void setPosicion(UTM posicion);
     void darAviso();
+    void Recargar(PuntoRecarga *t);
+    void terminarRecarga();
     
     
 private:
@@ -48,6 +52,8 @@ private:
     Cliente  *usadoPor; 
     UTM posicion;
     float porcentajeBateria;
+    PuntoRecarga *RealizarCarga;
+   
 };
 
 #endif /* MOTO_H */

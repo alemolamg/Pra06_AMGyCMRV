@@ -59,6 +59,7 @@ public:
             float tamCasillaX, float tamCasillay,float numDivisionesX,float numDivisionesY);//ToDo: Tenemos que calcular el numero divisiones en el constructor, está por hacer
     MallaRegular(float minimoX, float maximoX, float minimoY, float maximoY); // Calcula un tamaño para X e Y automaticamente
     MallaRegular(const MallaRegular& orig);
+    virtual ~MallaRegular();
     
     void insertar(float x,float y, const T &dato);
     T* buscar(float x,float y, const T &dato);
@@ -71,8 +72,6 @@ public:
     float mediaElementosPorCelda();
     
     ///-------Sin Terminar -----------///
-    virtual ~MallaRegular();
-      
     
 };
 
