@@ -199,11 +199,10 @@ void Cliente::mostrarMensaje(string texto){
 
 Moto* Cliente::getMiMoto() {
     list<Itinerario>::iterator i=rutas.end();
-    if(i!=){
-        i--;
+       i--;
         return i->GetVehiculo();
     }
-}
+
 
 
 
