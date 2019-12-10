@@ -16,6 +16,7 @@ EcoCityMoto::EcoCityMoto(const string& fileClientes, const string& fileMotos,uns
     cargarClientes(fileClientes,funcionHash);
     //ToDo: hacer aleatorios y probarlos luego
     
+    
 //    int x=rand()%(10000),xx=rand()%(10000); 
 //    double y=(float) x/1000, z=(float) xx/1000;
     Cliente cli;
