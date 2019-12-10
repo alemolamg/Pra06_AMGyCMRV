@@ -15,19 +15,23 @@ EcoCityMoto::EcoCityMoto(const string& fileClientes, const string& fileMotos,uns
     cargarMotos(fileMotos);
     cargarClientes(fileClientes,funcionHash);
     //ToDo: hacer aleatorios y probarlos luego
-//    Set_random(8);
-//    for (int i=0; i<300; i++){
-//        stringstream ss;
-//        ss<<i;
-//        UTM pos=UTM ( Randfloat(37,38),Randfloat(3,4) );
-//        PuntoRecarga pr(ss.str(),pos);
-//        puntosRec.insertarDato(pos.GetLatitud(),pos.GetLongitud(),pr);
+//    int x=rand()%(10000),xx=rand()%(10000); 
+//    double y=(float) x/1000, z=(float) xx/1000;
+    Cliente cli;
+    srand(8);
+    for (int i=0; i<300; i++){
+        stringstream ss;
+        ss<<i;
+//        UTM pos=cli.creaUTMAleatorio(); //repasar como hacer aleatorios
+//        PuntoRecarga pr(ss.str(),pos); //ToDo: preguntar funcionamiento
+//        recargaPuntos.insertar(pos.GetLatitud(),pos.GetLongitud(),pr);
 //        cout << "X: " << pos.GetLatitud() << "Y: " << pos.GetLongitud() <<endl;
-//    }
-//    cout << "******Datos Malla: " << endl;
-//    cout << "Numero de Puntos de Recarga: " << puntosRec.numElementos() << endl;
-//    cout << "maximo Puntos por celda: " << puntosRec.maxElementosPorCelda() << endl;
-//    cout << "media Puntos por celda: " << puntosRec.mediaElementosPorCelda() << endl;
+    }
+    cout << "******Datos Malla: " << endl;
+    cout << "Numero de Puntos de Recarga: " << recargaPuntos.numElementos() << endl;
+    cout << "maximo Puntos por celda: " << recargaPuntos.maxElementosPorCelda() << endl;
+    cout << "media Puntos por celda: " << recargaPuntos.mediaElementosPorCelda() << endl;
+    
 }
 
 EcoCityMoto::EcoCityMoto(const EcoCityMoto& orig):
@@ -406,27 +410,11 @@ void EcoCityMoto::GuardarMotosItinerarios(const string& file) { //ToDo: hacer pa
     fs.open(file,ofstream::trunc);
     
     if(fs.good()){
-        Moto* motg;
-        //vector<string> vecCli=getVecDNICli();
-        //Cliente* pclient;
         fs << "id;status;posicionUTM-lat;posicionUTM-lon;porcentajeBateria" << endl;
         int i=0; 
-        while (i<motos.size()){            
-            
-            //list<Itinerario> r=pclient->getRutas();
-//            list<Itinerario>::iterator it2=motos(i);
-            
+        while (i<motos.size()){                        
             fs <<motos[i].getId() <<";"<<motos[i].getStatus() <<";"<< motos[i].getPosicion().latitud<<
                     ";" <<motos[i].getPosicion().longitud <<";"<<motos[i].getPorcentajeBateria() <<endl;
-            /*while (it2!=r.end()){
-                fs << it2->GetId() <<";"<< it2->GetInicio().GetLatitud() <<";"<<
-                   it2->GetInicio().GetLongitud() <<";"<< it2->GetFin().GetLatitud() <<";"<<
-                   it2->GetFin().GetLongitud() <<";"<< it2->GetFecha().verDia() <<";"<<
-                   it2->GetFecha().verMes() <<";"<< it2->GetFecha().verAnio() <<";"<<
-                   it2->GetFecha().verHora() <<";"<< it2->GetFecha().verMin() <<";"<< 
-                   it2->GetMinutos() <<";"<< it2->GetVehiculo()->getId() << endl;
-                it2++;
-            }*/
             i++;            
         }    
         fs.close(); //Cerramos el flujo de entrada         
@@ -437,7 +425,6 @@ void EcoCityMoto::GuardarMotosItinerarios(const string& file) { //ToDo: hacer pa
     
 PuntoRecarga EcoCityMoto::puntoRecargaCercano(Cliente& cli){
     PuntoRecarga pr=recargaPuntos.buscarCercano(cli.getPosicion().latitud,cli.getPosicion().longitud);
-    //pr=recargaPuntos.buscarCercano(cli.getPosicion().latitud,cli.getPosicion().longitud);
     return pr;
     
 }
