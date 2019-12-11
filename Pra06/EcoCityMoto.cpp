@@ -11,7 +11,7 @@
 #include "EcoCityMoto.h"
 
 EcoCityMoto::EcoCityMoto(const string& fileClientes, const string& fileMotos,unsigned long tamTabla,int funcionHash):
-    idUltimo(0), clientes(tamTabla), motos(),recargaPuntos(37.3, 38.4, 15, 15){
+    idUltimo(0), clientes(tamTabla), motos(),recargaPuntos(37, 3, 38, 4, 15, 15){
     cargarMotos(fileMotos);
     cargarClientes(fileClientes,funcionHash);
     
@@ -396,7 +396,7 @@ void EcoCityMoto::borraTodosLosClientes(unsigned long borraTodosEstos){
             "Tam nuevo es: "<< clientes.numClientes()<<std::endl;
 }
 
-void EcoCityMoto::GuardarMotosItinerarios(const string& file) { //ToDo: hacer para las motos
+void EcoCityMoto::GuardarMotosItinerarios(const string& file) { 
     ofstream fs;                   
     fs.open(file,ofstream::trunc);
     
@@ -407,8 +407,8 @@ void EcoCityMoto::GuardarMotosItinerarios(const string& file) { //ToDo: hacer pa
         while (i<motos.size()){                        
 //            fs <<motos[i].getId() <<";"<<motos[i].getStatus() <<";"<< motos[i].getPosicion().latitud<<";"
 //                    <<motos[i].getPosicion().longitud <<";"<<motos[i].getPorcentajeBateria() <<endl;
-            fs <<motos[i].getId() <<";"<<motos[i].getStatus() <<";"<< motos[i].getPosicion().latitud<<";"
-                    <<motos[i].getPosicion().longitud <<endl;
+            fs <<motos[i].getId() <<";"<<motos[i].getStatus() <<";"<< motos[i].getPosicion().GetLatitud()<<";"
+                    <<motos[i].getPosicion().GetLongitud() <<endl;
             i++;            
         }    
         fs.close(); //Cerramos el flujo de entrada         
@@ -418,7 +418,7 @@ void EcoCityMoto::GuardarMotosItinerarios(const string& file) { //ToDo: hacer pa
 }   
     
 PuntoRecarga EcoCityMoto::puntoRecargaCercano(Cliente& cli){
-    PuntoRecarga pr=recargaPuntos.buscarCercano(cli.getPosicion().latitud,cli.getPosicion().longitud);
+    PuntoRecarga pr=recargaPuntos.buscarCercano(cli.getPosicion().GetLatitud(),cli.getPosicion().GetLongitud());
     return pr;
     
 }
@@ -435,31 +435,26 @@ void EcoCityMoto::setMotos(vector<Moto> motos) {
     this->motos = motos;
 }
 
-
-    void EcoCityMoto::generarPuntosRecarga(){
-        srand(8);
-        int numdivi=100;
-        for (int i=0; i<300; i++){
+void EcoCityMoto::generarPuntosRecarga(){
+    srand(8);
+    int numdivi=100;
+    for (int i=0; i<300; i++){
         stringstream ss;
         ss<<i;
         float ale1,ale2;
         for (int num=0;num<2;num++){
             int alemol=rand()%numdivi;
-            if(num=0)
+            if(num==0)
                 ale1= (float) (alemol)/numdivi;
             else
-                ale2=  (float) (alemol)/numdivi;
-        }
-//        double ale1=rand()%(37,38) ,ale2=rand()%(3,4); //ToDo: Calcular de nuevo
-////        int alemol=rand()%numdivi;
-//        float alemolAMG= (float) (alemol)/numdivi;
-//        int alea2=rand()%(3,4);
+                ale2= (float) (alemol)/numdivi;
+            }
         
-        UTM pos=UTM (rand()%(37,38),rand()%(3,4) );
+            UTM pos=UTM (ale1,ale2 );
         
-        //ToDo: Esas dos lineas de código no funcionan y no se pq
-        PuntoRecarga pr(ss.str(),ale1,ale2);
-        recargaPuntos.insertar(ale1,ale2,pr);
-        cout << "X: " << ale1<< "Y: " << ale2<<endl;
+            
+            PuntoRecarga pr(ss.str(),pos.GetLatitud(),pos.GetLongitud());
+            recargaPuntos.insertar(pos.GetLatitud(),pos.GetLongitud(),pr);
+            cout << "X: " << pos.GetLatitud()<< "Y: " << pos.GetLongitud()<<endl;
     }
 }
