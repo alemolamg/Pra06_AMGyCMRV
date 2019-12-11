@@ -77,13 +77,18 @@ public:
 
 template <class T>
 MallaRegular<T>::MallaRegular(float minimoX, float maximoX, float minimoY, float maximoY, float tamCasillaX, float tamCasillay,float numDivisionesX,float numDivisionesY):
-    xMin(minimoX), xMax(maximoX), yMin(minimoY), yMax(maximoY), tamCasillaX(tamCasillaX),tamCasillaY(tamCasillay),tamLogico(0),numDivX(numDivisionesX),numDivY(numDivisionesY){};
+    xMin(minimoX), xMax(maximoX), yMin(minimoY), yMax(maximoY), tamCasillaX(tamCasillaX),tamCasillaY(tamCasillay),tamLogico(0),numDivX(numDivisionesX),numDivY(numDivisionesY){
+    mallaR.insert(mallaR.begin(), numDivX, std::vector<Casilla<T> >(numDivY));
+};
 
     
 template <class T>
 MallaRegular<T>::MallaRegular(float minimoX, float maximoX, float minimoY, float maximoY):
     xMin(minimoX), xMax(maximoX), yMin(minimoY), yMax(maximoY),tamLogico(0),
-        tamCasillaX(xMax/(xMax-xMin)), tamCasillaY(yMax/(yMax-yMin)){}
+        tamCasillaX(xMax/(xMax-xMin)), tamCasillaY(yMax/(yMax-yMin)){
+    mallaR.insert(mallaR.begin(), numDivX, std::vector<Casilla<T> >(numDivY));
+}
+
 
 template <class T>
 MallaRegular<T>::MallaRegular(const MallaRegular& orig): xMin(orig.xMin), xMax(orig.xMax), yMin(orig.yMin), yMax(orig.yMax),
