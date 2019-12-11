@@ -10,6 +10,7 @@
 #include "Cliente.h"
 #include "Moto.h"
 #include "EcoCityMoto.h"
+#include "PuntoRecarga.h"
 
 int main(){    
     unsigned long primo,numero=10000;
@@ -20,7 +21,7 @@ int main(){
     setlocale(LC_ALL,"es_ES.UTF8"); 
     srand(time(0));
     try{ 
-         int modo=1; // modo=1-> entrenar; modo=0-> ejecutar normal;
+         int modo=0; // modo=1-> entrenar; modo=0-> ejecutar normal;
          
          if(modo==1){
             //int funHash=0;
