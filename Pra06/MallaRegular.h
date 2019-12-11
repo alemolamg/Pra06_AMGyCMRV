@@ -185,10 +185,13 @@ unsigned MallaRegular<T>::maxElementosPorCelda(){
 
 template <class T>
 bool MallaRegular<T>::fueraAmbito(float x, float y){ //ToDo: comprobar que funciona
+    Casilla<T>* cas;
     for(unsigned i=x-tamCasillaX;i<x+tamCasillaX;i+=tamCasillaX){
         for(unsigned j=y-tamCasillaY;j<y+tamCasillaY;j+=tamCasillaY){
+            
             if( (i<=xMax && i>=xMin) && (j<=yMax && j>=yMin) ){
-                Casilla<T> *cas=obtenerCasilla(i,j);
+                *cas=obtenerCasilla(i,j);
+                
                 if(cas->puntos.size()){
                     typename std::list<T>::iterator ite;
                     for (ite=cas->puntos.begin();ite!= cas->puntos.end();++ite){

@@ -14,6 +14,8 @@ EcoCityMoto::EcoCityMoto(const string& fileClientes, const string& fileMotos,uns
     idUltimo(0), clientes(tamTabla), motos(),recargaPuntos(37.3, 38.4, 15, 15){
     cargarMotos(fileMotos);
     cargarClientes(fileClientes,funcionHash);
+    
+    
     //ToDo: hacer aleatorios y probarlos luego
 //    int x=rand()%(10000),xx=rand()%(10000); 
 //    double y=(float) x/1000, z=(float) xx/1000;
@@ -410,11 +412,14 @@ void EcoCityMoto::GuardarMotosItinerarios(const string& file) { //ToDo: hacer pa
     fs.open(file,ofstream::trunc);
     
     if(fs.good()){
-        fs << "id;status;posicionUTM-lat;posicionUTM-lon;porcentajeBateria" << endl;
+//        fs << "matricula;status;lat;lon;porcentajeBateria" << endl;
+        fs << "matricula;status;lat;lon" << endl;
         int i=0; 
         while (i<motos.size()){                        
-            fs <<motos[i].getId() <<";"<<motos[i].getStatus() <<";"<< motos[i].getPosicion().latitud<<
-                    ";" <<motos[i].getPosicion().longitud <<";"<<motos[i].getPorcentajeBateria() <<endl;
+//            fs <<motos[i].getId() <<";"<<motos[i].getStatus() <<";"<< motos[i].getPosicion().latitud<<";"
+//                    <<motos[i].getPosicion().longitud <<";"<<motos[i].getPorcentajeBateria() <<endl;
+            fs <<motos[i].getId() <<";"<<motos[i].getStatus() <<";"<< motos[i].getPosicion().latitud<<";"
+                    <<motos[i].getPosicion().longitud <<endl;
             i++;            
         }    
         fs.close(); //Cerramos el flujo de entrada         
