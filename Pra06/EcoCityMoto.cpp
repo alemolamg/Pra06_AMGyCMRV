@@ -438,10 +438,22 @@ void EcoCityMoto::setMotos(vector<Moto> motos) {
 
     void EcoCityMoto::generarPuntosRecarga(){
         srand(8);
+        int numdivi=100;
         for (int i=0; i<300; i++){
         stringstream ss;
         ss<<i;
-        double ale1=rand()%(37,38) ,ale2=rand()%(3,4); //ToDo: Calcular de nuevo
+        float ale1,ale2;
+        for (int num=0;num<2;num++){
+            int alemol=rand()%numdivi;
+            if(num=0)
+                ale1= (float) (alemol)/numdivi;
+            else
+                ale2=  (float) (alemol)/numdivi;
+        }
+//        double ale1=rand()%(37,38) ,ale2=rand()%(3,4); //ToDo: Calcular de nuevo
+////        int alemol=rand()%numdivi;
+//        float alemolAMG= (float) (alemol)/numdivi;
+//        int alea2=rand()%(3,4);
         
         UTM pos=UTM (rand()%(37,38),rand()%(3,4) );
         
