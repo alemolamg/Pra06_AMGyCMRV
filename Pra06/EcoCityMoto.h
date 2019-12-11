@@ -23,7 +23,7 @@ private:
     vector<string> dniClientes;
     MallaRegular<PuntoRecarga> recargaPuntos;
     
-    //---FUNCIONES----------//
+    //---------FUNCIONES------------//
     void cargarMotos(string fileNameMotos);
     void cargarClientes(const string &fileNameClientes,int funHash);
     void crearItinerarios(int num,const UTM &min,const UTM &max);
