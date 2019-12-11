@@ -125,7 +125,7 @@ unsigned MallaRegular<T>::numElementos(){
 }
 
 template <class T>
-T MallaRegular<T>::buscarCercano(float x, float y){
+T MallaRegular<T>::buscarCercano(float x, float y){ //ToDo:Revisar funcionamiento
     T cercano;
     double distancia=99999999;
     Casilla<T> *cas;
@@ -191,7 +191,6 @@ bool MallaRegular<T>::fueraAmbito(float x, float y){ //ToDo: comprobar que funci
             
             if( (i<=xMax && i>=xMin) && (j<=yMax && j>=yMin) ){
                 *cas=obtenerCasilla(i,j);
-                
                 if(cas->puntos.size()){
                     typename std::list<T>::iterator ite;
                     for (ite=cas->puntos.begin();ite!= cas->puntos.end();++ite){
