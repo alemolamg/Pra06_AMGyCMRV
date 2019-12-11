@@ -437,14 +437,17 @@ void EcoCityMoto::setMotos(vector<Moto> motos) {
 
 
     void EcoCityMoto::generarPuntosRecarga(){
-    for (int i=0; i<300; i++){
+        srand(8);
+        for (int i=0; i<300; i++){
         stringstream ss;
         ss<<i;
+        double ale1=rand()%(37,38) ,ale2=rand()%(3,4); //ToDo: Calcular de nuevo
+        
         UTM pos=UTM (rand()%(37,38),rand()%(3,4) );
         
         //ToDo: Esas dos lineas de código no funcionan y no se pq
-        PuntoRecarga pr(ss.str(),pos.GetLatitud(),pos.GetLongitud());
-        recargaPuntos.insertar(pos.GetLatitud(),pos.GetLongitud(),pr);
-        cout << "X: " << pos.GetLatitud() << "Y: " << pos.GetLongitud() <<endl;
+        PuntoRecarga pr(ss.str(),ale1,ale2);
+        recargaPuntos.insertar(ale1,ale2,pr);
+        cout << "X: " << ale1<< "Y: " << ale2<<endl;
     }
 }

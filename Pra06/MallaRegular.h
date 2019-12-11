@@ -56,7 +56,7 @@ class MallaRegular {
     
 public:
     MallaRegular(float minimoX, float maximoX, float minimoY, float maximoY,
-            float tamCasillaX, float tamCasillay,float numDivisionesX,float numDivisionesY);//ToDo: Tenemos que calcular el numero divisiones en el constructor, está por hacer
+            float numDivisionesX,float numDivisionesY);//ToDo: Tenemos que calcular el numero divisiones en el constructor, está por hacer
     MallaRegular(float minimoX, float maximoX, float minimoY, float maximoY); // Calcula un tamaño para X e Y automaticamente
     MallaRegular(const MallaRegular& orig);
     virtual ~MallaRegular(){};
@@ -76,8 +76,8 @@ public:
 };
 
 template <class T>
-MallaRegular<T>::MallaRegular(float minimoX, float maximoX, float minimoY, float maximoY, float tamCasillaX, float tamCasillay,float numDivisionesX,float numDivisionesY):
-    xMin(minimoX), xMax(maximoX), yMin(minimoY), yMax(maximoY), tamCasillaX(tamCasillaX),tamCasillaY(tamCasillay),tamLogico(0),numDivX(numDivisionesX),numDivY(numDivisionesY){
+MallaRegular<T>::MallaRegular(float minimoX, float maximoX, float minimoY, float maximoY,float numDivisionesX,float numDivisionesY):
+    xMin(minimoX), xMax(maximoX), yMin(minimoY), yMax(maximoY),tamLogico(0),numDivX(numDivisionesX),numDivY(numDivisionesY),tamCasillaX(xMax/(xMax-xMin)),tamCasillaY(yMax/(yMax-yMin)){
     mallaR.insert(mallaR.begin(), numDivX, std::vector<Casilla<T> >(numDivY));
 };
 
@@ -104,7 +104,7 @@ template <class T>
 Casilla<T>* MallaRegular<T>::obtenerCasilla(float x, float y){
     int numX=(x-xMin)/tamCasillaX;
     int numY=(y-yMin)/tamCasillaY;
-    return &mallaR[numX][numY];
+    return &mallaR[numX][numY]; //ToDo: esta fuera del rango
 }
 
 template <class T>
