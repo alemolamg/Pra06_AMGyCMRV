@@ -20,16 +20,16 @@ int main(){
     setlocale(LC_ALL,"es_ES.UTF8"); 
     srand(time(0));
     try{ 
-         int modo=1; // modo=1-> entrenar; modo=0-> ejecutar normal;
+         int modo=1; // modo=1-> entrenar; modo=0-> ejecutar normal; //Prueba creación de los puntos recarga
          
          if(modo==1){
             //int funHash=0;
             unsigned long tam[]={numero,10580};
             
-             cout<<"\nCargamos el archivo con el numero: "<< tam[0]<<" funHash num: 0 " <<std::endl;
-                    EcoCityMoto ecoEntrena("clientes_v2.csv","motos.txt",tam[0],0);
+             //cout<<"\nCargamos el archivo con el numero: "<< tam[0]<<" funHash num: 0 " <<std::endl;
+                    EcoCityMoto ecoEntrena("clientes_v2.csv","motos.txt",tam[0],0); //Prueba creación de los puntos recarga
             
-//            for(int i=0;i<2;i++){ //Cambia el Tamaño
+//            for(int i=0;i<2;i++){ //Cambia el Tamaño  //comentado para pruevas
 //                cout<<"\n\nCargamos con el numero "<<tam[i]<<std::endl;
 //                for(int funHash=0;funHash<3;funHash++){ //Recorre las funciones hash
 //                    cout<<"\nCargamos el archivo con el numero: "<< tam[i]<<" funHash num: "<<funHash+1 <<std::endl;
