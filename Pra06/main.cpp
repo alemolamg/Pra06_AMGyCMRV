@@ -26,15 +26,17 @@ int main(){
             //int funHash=0;
             unsigned long tam[]={numero,10580};
             
-            for(int i=0;i<2;i++){ //Cambia el Tamaño
-                cout<<"\n\nCargamos con el numero "<<tam[i]<<std::endl;
-                for(int funHash=0;funHash<3;funHash++){ //Recorre las funciones hash
-                    cout<<"\nCargamos el archivo con el numero: "<< tam[i]<<" funHash num: "<<funHash+1 <<std::endl;
-                    EcoCityMoto ecoEntrena("clientes_v2.csv","motos.txt",tam[i],funHash);
-                    //cout<<"Fin del nuemro "<<tam[i]<<"\n\n";
-                     
-                }
-             }
+             cout<<"\nCargamos el archivo con el numero: "<< tam[0]<<" funHash num: 0 " <<std::endl;
+                    EcoCityMoto ecoEntrena("clientes_v2.csv","motos.txt",tam[0],0);
+            
+//            for(int i=0;i<2;i++){ //Cambia el Tamaño
+//                cout<<"\n\nCargamos con el numero "<<tam[i]<<std::endl;
+//                for(int funHash=0;funHash<3;funHash++){ //Recorre las funciones hash
+//                    cout<<"\nCargamos el archivo con el numero: "<< tam[i]<<" funHash num: "<<funHash+1 <<std::endl;
+//                    EcoCityMoto ecoEntrena("clientes_v2.csv","motos.txt",tam[i],funHash);
+//                    //cout<<"Fin del nuemro "<<tam[i]<<"\n\n";    
+//                }
+//             }
             cout <<"\nTERMINADO ENTRENAMIENTO\n"<<std::endl;
              
              
