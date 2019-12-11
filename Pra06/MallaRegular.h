@@ -102,8 +102,8 @@ T* MallaRegular<T>::buscar(float x, float y, const T& dato){
 
 template <class T>
 Casilla<T>* MallaRegular<T>::obtenerCasilla(float x, float y){
-    int numX=(x-xMin)/tamCasillaX;
-    int numY=(y-yMin)/tamCasillaY;
+    float numX=(x+xMin)/tamCasillaX;
+    float numY=(y+yMin)/tamCasillaY;
     return &mallaR[numX][numY]; //ToDo: esta fuera del rango
 }
 
