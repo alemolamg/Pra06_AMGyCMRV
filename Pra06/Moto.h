@@ -41,7 +41,7 @@ public:
     void setStatus(tipoEstado status);
     void setPosicion(UTM posicion);
     void darAviso();
-    void Recargar(PuntoRecarga *t);
+    void Recargar(PuntoRecarga *cargando);
     void terminarRecarga();
     
     

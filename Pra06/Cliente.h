@@ -64,9 +64,7 @@ public:
     void decrementapunto();
     void aumentapunto();
     void RecargarMoto(PuntoRecarga &Punto_Recarga);
-    //Faltan por hacer//
-    
-    void puntoRecargaMasCercano();
+    PuntoRecarga puntoRecargaMasCercano();
     
     
     
