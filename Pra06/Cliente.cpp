@@ -201,7 +201,7 @@ Moto* Cliente::getMiMoto() {
     list<Itinerario>::iterator i=rutas.end();
     i--;
     return i->GetVehiculo();
-    }
+}
 
 
 
@@ -218,8 +218,6 @@ void Cliente::decrementapunto(){
     }
     
     void Cliente::RecargarMoto(PuntoRecarga &Punto_Recarga){
-        getMiMoto()->darAviso();
-        getDisplay();
         getMiMoto()->Recargar(&Punto_Recarga);
         getMiMoto()->setStatus(Recargando);
         getMiMoto()->darAviso();
@@ -231,5 +229,9 @@ void Cliente::decrementapunto(){
         getMiMoto()->seDesactiva();
         
     }
+    
+     PuntoRecarga Cliente::puntoRecargaMasCercano(){
+        return acceso->puntoRecargaCercano(*this);
+     }
 
 

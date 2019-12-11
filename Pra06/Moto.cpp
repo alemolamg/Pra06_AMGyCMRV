@@ -94,8 +94,8 @@ void Moto::darAviso(){
     }
 }
     
-void Moto::Recargar(PuntoRecarga *t){
-    RealizarCarga=t;
+void Moto::Recargar(PuntoRecarga *cargando){
+    RealizarCarga=cargando;
 }
     
 void Moto::terminarRecarga(){
