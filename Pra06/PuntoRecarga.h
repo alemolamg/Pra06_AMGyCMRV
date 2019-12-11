@@ -34,11 +34,11 @@ public:
     }
 
     double getX() const{
-        return posicion.latitud;
+        return posicion.GetLatitud();
     }
     
     double getY() const{
-        return posicion.longitud;
+        return posicion.GetLongitud();
     }
 private:
     std::string id;

@@ -130,7 +130,7 @@ unsigned MallaRegular<T>::numElementos(){
 }
 
 template <class T>
-T MallaRegular<T>::buscarCercano(float x, float y){ //ToDo:Revisar funcionamiento
+T MallaRegular<T>::buscarCercano(float x, float y){ 
     T cercano;
     double distancia=99999999;
     Casilla<T> *cas;

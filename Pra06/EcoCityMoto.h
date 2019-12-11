@@ -27,7 +27,7 @@ private:
     void cargarMotos(string fileNameMotos);
     void cargarClientes(const string &fileNameClientes,int funHash);
     void crearItinerarios(int num,const UTM &min,const UTM &max);
-    void GuardarMotosItinerarios(const string& file); //ToDo: hacer, no está hecho nada
+    void GuardarMotosItinerarios(const string& file); 
     void guardarClientesItinerarios(const string &fileName);
     void generarPuntosRecarga();
     vector<string> getVecDNICli();
