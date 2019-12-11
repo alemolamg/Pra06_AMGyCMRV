@@ -58,7 +58,7 @@ std::list<Itinerario> Cliente::getRutas() const {
 }
 
 double Cliente::distancia(const Cliente& otro) {
-    return sqrt(pow((otro.posicion.latitud-posicion.latitud),2)+pow((otro.posicion.longitud-posicion.longitud),2));
+    return sqrt(pow((otro.posicion.GetLatitud()-posicion.GetLatitud()),2)+pow((otro.posicion.GetLongitud()-posicion.GetLongitud()),2));
 }
 
 UTM Cliente::creaUTMAleatorio(const UTM &min,const UTM &max) {
@@ -67,8 +67,8 @@ UTM Cliente::creaUTMAleatorio(const UTM &min,const UTM &max) {
         srand(time(NULL));
             int x=rand()%(10000),xx=rand()%(10000); 
             double y=(float) x/1000, z=(float) xx/1000;
-            y=y*(max.latitud-min.latitud)+min.latitud;
-            z=z*(max.longitud-min.longitud)+min.longitud;
+            y=y*(max.GetLatitud()-min.GetLatitud())+min.GetLatitud();
+            z=z*(max.GetLongitud()-min.GetLongitud())+min.GetLongitud();
                 iniY=y;
                 iniZ=z;        
         return  UTM(iniY,iniZ);

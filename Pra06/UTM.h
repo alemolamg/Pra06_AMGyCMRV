@@ -9,9 +9,11 @@
 #include <cmath>
 class UTM {
 
-public:
     double latitud;
     double longitud;
+    
+public:
+    
     
     UTM (double _lat, double _long): latitud(_lat), longitud (_long){};
     UTM(const UTM& orig): latitud(orig.latitud),longitud(orig.longitud){};
