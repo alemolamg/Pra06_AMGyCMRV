@@ -15,20 +15,8 @@ EcoCityMoto::EcoCityMoto(const string& fileClientes, const string& fileMotos,uns
     cargarMotos(fileMotos);
     cargarClientes(fileClientes,funcionHash);
     
-    
-    //ToDo: hacer aleatorios y probarlos luego
-//    int x=rand()%(10000),xx=rand()%(10000); 
-//    double y=(float) x/1000, z=(float) xx/1000;
-    Cliente cli;
-    srand(8);
-    for (int i=0; i<300; i++){
-        stringstream ss;
-        ss<<i;
-//        UTM pos=cli.creaUTMAleatorio(); //repasar como hacer aleatorios
-//        PuntoRecarga pr(ss.str(),pos); //ToDo: preguntar funcionamiento
-//        recargaPuntos.insertar(pos.GetLatitud(),pos.GetLongitud(),pr);
-//        cout << "X: " << pos.GetLatitud() << "Y: " << pos.GetLongitud() <<endl;
-    }
+    generarPuntosRecarga();
+
     cout << "******Datos Malla: " << endl;
     cout << "Numero de Puntos de Recarga: " << recargaPuntos.numElementos() << endl;
     cout << "maximo Puntos por celda: " << recargaPuntos.maxElementosPorCelda() << endl;
@@ -88,6 +76,7 @@ void EcoCityMoto::cargarMotos(string fileNameMotos){
                     case 1: tipo=Activo; break;
                     case 2: tipo=SinBateria; break;
                     case 3: tipo=Rota; break;
+                    case 4: tipo=Recargando;break;
                 }
                 //Leemos la latitud y longitud
                 getline(ss,latitud,';');        //El caráter ; se lee y se elimina de ss
@@ -444,4 +433,18 @@ THashCliente EcoCityMoto::getClientes() const {
 
 void EcoCityMoto::setMotos(vector<Moto> motos) {
     this->motos = motos;
+}
+
+
+    void EcoCityMoto::generarPuntosRecarga(){
+    for (int i=0; i<300; i++){
+        stringstream ss;
+        ss<<i;
+        UTM pos=UTM (rand()%(37,38),rand()%(3,4) );
+        
+        //ToDo: Esas dos lineas de código no funcionan y no se pq
+        PuntoRecarga pr(ss.str(),pos.GetLatitud(),pos.GetLongitud());
+        recargaPuntos.insertar(pos.GetLatitud(),pos.GetLongitud(),pr);
+        cout << "X: " << pos.GetLatitud() << "Y: " << pos.GetLongitud() <<endl;
+    }
 }
