@@ -18,17 +18,15 @@ public:
     PuntoRecarga(const PuntoRecarga& orig):
         id(orig.id),posicion(orig.posicion){};
     
+        virtual ~PuntoRecarga(){};
     
-    virtual ~PuntoRecarga(){
-    };
-    
-    PuntoRecarga& operator=(const PuntoRecarga& orig){
+   /* PuntoRecarga& operator=(const PuntoRecarga& orig){
     if (this!=&orig){
         id=orig.id;
         posicion=orig.posicion;
     }
     return *this;
-}
+}*/
 
 
     std::string GetId() const {
