@@ -11,7 +11,7 @@
 #include "EcoCityMoto.h"
 
 EcoCityMoto::EcoCityMoto(const string& fileClientes, const string& fileMotos,unsigned long tamTabla,int funcionHash):
-    idUltimo(0), clientes(tamTabla), motos(),recargaPuntos(37,38, 3, 4, 15, 15){
+    idUltimo(0), clientes(tamTabla), motos(),recargaPuntos(37,38, 3, 4, 20, 20){
     cargarMotos(fileMotos);
     cargarClientes(fileClientes,funcionHash);
     
@@ -443,8 +443,8 @@ void EcoCityMoto::generarPuntosRecarga(){
         ss<<i;
 
         float cayeSol[2];
-        int otromol=37000+rand()%(38001-37000);
-        int otromol2=3000+rand()%(4001-3000);
+        int otromol=37000+rand()%(() -37000);
+        int otromol2=3000+rand()%(4000-3000);
         cayeSol[0]= (float) (otromol)/numdivi;
         cayeSol[1]= (float) (otromol2)/numdivi;
         
