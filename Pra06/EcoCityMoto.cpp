@@ -11,7 +11,7 @@
 #include "EcoCityMoto.h"
 
 EcoCityMoto::EcoCityMoto(const string& fileClientes, const string& fileMotos,unsigned long tamTabla,int funcionHash):
-    idUltimo(0), clientes(tamTabla), motos(),recargaPuntos(37, 3, 38, 4, 15, 15){
+    idUltimo(0), clientes(tamTabla), motos(),recargaPuntos(37,38, 3, 4, 15, 15){
     cargarMotos(fileMotos);
     cargarClientes(fileClientes,funcionHash);
     
@@ -436,7 +436,7 @@ void EcoCityMoto::setMotos(vector<Moto> motos) {
 }
 
 void EcoCityMoto::generarPuntosRecarga(){
-    srand(8);
+    srand(1);
     int numdivi=100;
     for (int i=0; i<300; i++){
         stringstream ss;
@@ -450,7 +450,7 @@ void EcoCityMoto::generarPuntosRecarga(){
                 ale2= (float) (alemol)/numdivi;
             }
         
-            UTM pos=UTM (ale1,ale2 );
+            UTM pos=UTM (ale1,ale2);
         
             
             PuntoRecarga pr(ss.str(),pos.GetLatitud(),pos.GetLongitud());

@@ -104,6 +104,8 @@ template <class T>
 Casilla<T>* MallaRegular<T>::obtenerCasilla(float x, float y){
     float numX=(x+xMin)/tamCasillaX;
     float numY=(y+yMin)/tamCasillaY;
+    numY=37,9;
+    numX=38,1;
     return &mallaR[numX][numY]; //ToDo: esta fuera del rango
 }
 
