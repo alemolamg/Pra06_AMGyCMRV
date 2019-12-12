@@ -11,6 +11,7 @@
 #include <vector>
 #include <math.h>
 #include <time.h>
+#include <ostream>
 
 template <class T>
 class MallaRegular;
@@ -102,11 +103,12 @@ T* MallaRegular<T>::buscar(float x, float y, const T& dato){
 
 template <class T>
 Casilla<T>* MallaRegular<T>::obtenerCasilla(float x, float y){
-    float numX=(x+xMin)/tamCasillaX;
-    float numY=(y+yMin)/tamCasillaY;
-    numY=37,9;
-    numX=38,1;
+    float numX=(x-xMin)/tamCasillaX;
+    float numY=(y-yMin)/tamCasillaY;
+//    numY=37.9;
+//    numX=38.1;
     return &mallaR[numX][numY]; //ToDo: esta fuera del rango
+    std::cout<<"malla insertada"<<std::endl;
 }
 
 template <class T>

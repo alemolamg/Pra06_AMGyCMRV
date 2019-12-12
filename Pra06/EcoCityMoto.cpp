@@ -437,24 +437,20 @@ void EcoCityMoto::setMotos(vector<Moto> motos) {
 
 void EcoCityMoto::generarPuntosRecarga(){
     srand(1);
-    int numdivi=100;
+    int numdivi=1000;
     for (int i=0; i<300; i++){
         stringstream ss;
         ss<<i;
-        float ale1,ale2;
-        for (int num=0;num<2;num++){
-            int alemol=rand()%numdivi;
-            if(num==0)
-                ale1= (float) (alemol)/numdivi;
-            else
-                ale2= (float) (alemol)/numdivi;
-            }
+
+        float cayeSol[2];
+        int otromol=37000+rand()%(38001-37000);
+        int otromol2=3000+rand()%(4001-3000);
+        cayeSol[0]= (float) (otromol)/numdivi;
+        cayeSol[1]= (float) (otromol2)/numdivi;
         
-            UTM pos=UTM (ale1,ale2);
-        
-            
-            PuntoRecarga pr(ss.str(),pos.GetLatitud(),pos.GetLongitud());
-            recargaPuntos.insertar(pos.GetLatitud(),pos.GetLongitud(),pr);
-            cout << "X: " << pos.GetLatitud()<< "Y: " << pos.GetLongitud()<<endl;
+        UTM pos=UTM (cayeSol[0],cayeSol[1]);
+        PuntoRecarga pr(ss.str(),pos.GetLatitud(),pos.GetLongitud());
+        recargaPuntos.insertar(pos.GetLatitud(),pos.GetLongitud(),pr);
+        cout << "X: " << pos.GetLatitud()<< "Y: " << pos.GetLongitud()<<endl;
     }
 }
