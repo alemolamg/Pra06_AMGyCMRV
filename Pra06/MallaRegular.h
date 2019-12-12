@@ -107,10 +107,10 @@ template <class T>
 Casilla<T>* MallaRegular<T>::obtenerCasilla(float x, float y){
     float numX=(x-xMin)/tamCasillaX;
     float numY=(y-yMin)/tamCasillaY;
-    if ((numX<xMin || numX>xMax) ||  (numY<yMin || numY>yMax) ){
-        std::cout<<"nos hemos quedado en el puntoRecarga num: "<<numElementosTotales<<std::endl;
-//        throw std::out_of_range("MallaRegular::obtener casilla: Numero fuera del rango");
-    }
+//    if ((numX<xMin || numX>xMax) ||  (numY<yMin || numY>yMax) ){
+//        std::cout<<"nos hemos quedado en el puntoRecarga num: "<<numElementosTotales<<std::endl;
+////        throw std::out_of_range("MallaRegular::obtener casilla: Numero fuera del rango");
+//    }
         return &mallaR[numX][numY]; //ToDo: esta fuera del rango
     std::cout<<"malla insertada"<<std::endl;
 }
@@ -119,6 +119,7 @@ template <class T>
 void MallaRegular<T>::insertar(float x, float y, const T& dato){
     Casilla<T> *cas=obtenerCasilla(x,y);
     cas->insertarC(dato);
+    std::cout<<"nos hemos quedado en el puntoRecarga num: "<<numElementosTotales<<std::endl;
     numElementosTotales++;
 }
 
