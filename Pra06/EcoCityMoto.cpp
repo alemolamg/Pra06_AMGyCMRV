@@ -451,6 +451,6 @@ void EcoCityMoto::generarPuntosRecarga(){
         UTM pos=UTM (cayeSol[0],cayeSol[1]);
         PuntoRecarga pr(ss.str(),pos.GetLatitud(),pos.GetLongitud());
         recargaPuntos.insertar(pos.GetLatitud(),pos.GetLongitud(),pr);
-        cout << "X: " << pos.GetLatitud()<< "Y: " << pos.GetLongitud()<<endl;
+        //cout << "X: " << pos.GetLatitud()<< "Y: " << pos.GetLongitud()<<endl;
     }
 }

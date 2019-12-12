@@ -78,15 +78,15 @@ public:
 
 template <class T>
 MallaRegular<T>::MallaRegular(float minimoX, float maximoX, float minimoY, float maximoY,float numDivisionesX,float numDivisionesY):
-    xMin(minimoX), xMax(maximoX), yMin(minimoY), yMax(maximoY),tamLogico(0),numDivX(numDivisionesX),numDivY(numDivisionesY),tamCasillaX(xMax/(xMax-xMin)),tamCasillaY(yMax/(yMax-yMin)){
+    xMin(minimoX), xMax(maximoX), yMin(minimoY), yMax(maximoY),tamLogico(0),numDivX(numDivisionesX),numDivY(numDivisionesY),tamCasillaX((xMax-xMin)/numDivisionesX),tamCasillaY((yMax-yMin)/numDivisionesY){
     mallaR.insert(mallaR.begin(), numDivX, std::vector<Casilla<T> >(numDivY));
 };
 
     
 template <class T>
 MallaRegular<T>::MallaRegular(float minimoX, float maximoX, float minimoY, float maximoY):
-    xMin(minimoX), xMax(maximoX), yMin(minimoY), yMax(maximoY),tamLogico(0),
-        tamCasillaX(xMax/(xMax-xMin)), tamCasillaY(yMax/(yMax-yMin)){
+    xMin(minimoX), xMax(maximoX), yMin(minimoY), yMax(maximoY),tamLogico(0),numDivX(15),numDivY(15),
+        tamCasillaX((xMax-xMin)/numDivX), tamCasillaY((yMax-yMin)/numDivY){
     mallaR.insert(mallaR.begin(), numDivX, std::vector<Casilla<T> >(numDivY));
 }
 
@@ -105,8 +105,6 @@ template <class T>
 Casilla<T>* MallaRegular<T>::obtenerCasilla(float x, float y){
     float numX=(x-xMin)/tamCasillaX;
     float numY=(y-yMin)/tamCasillaY;
-//    numY=37.9;
-//    numX=38.1;
     return &mallaR[numX][numY]; //ToDo: esta fuera del rango
     std::cout<<"malla insertada"<<std::endl;
 }
