@@ -28,7 +28,7 @@ int main(){
             unsigned long tam[]={numero,10580};
             
              //cout<<"\nCargamos el archivo con el numero: "<< tam[0]<<" funHash num: 0 " <<std::endl;
-                    EcoCityMoto ecoEntrena("clientes_v2.csv","motos2   hhhhh hhhhnhbnhbnbnnbbbbbbbbbbbbbbbbbbbvg nn                           i.txt",tam[0],0); //Prueba creación de los puntos recarga
+                    EcoCityMoto ecoEntrena("clientes_v2.csv","motos.txt",tam[0],0); //Prueba creación de los puntos recarga
 //                    EcoCityMoto genPuntosRecarga();
 //            for(int i=0;i<2;i++){ //Cambia el Tamaño  //comentado para pruevas
 //                cout<<"\n\nCargamos con el numero "<<tam[i]<<std::endl;
