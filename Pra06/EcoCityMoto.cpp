@@ -485,7 +485,7 @@ bool EcoCityMoto::redispersarPuntosRecarga() {
     
     if(!(recargaPuntos.maxElementosPorCelda()<5)){
         std::cout<< "Recalculamos el número necesario de tamaño de casilla"<<std::endl; //paso
-        recargaPuntos.ajustarTamMalla(1);
+        recargaPuntos.ajustarTamMalla(1); // con el 1 bastaria
         if(recargaPuntos.maxElementosPorCelda()<5){
             cout<<"Malla redispersada"<<std::endl;
             cout<<"TamCasillaX = "<<recargaPuntos.getTamCasillaX() <<std::endl;

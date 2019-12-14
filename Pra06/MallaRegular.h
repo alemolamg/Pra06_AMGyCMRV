@@ -313,7 +313,7 @@ bool MallaRegular<T>::ajustarTamMalla(int nuevoDivD){
     setTamCasillaY((getYMax()- getYMin()) / getNumDivY()+nuevoDivD);
     setNumDivX(getNumDivX()+ nuevoDivD);
     setNumDivY(getNumDivY()+ nuevoDivD);
-    return true;
+    return true; 
 }
 
 #endif /* MALLAREGULAR_H */
