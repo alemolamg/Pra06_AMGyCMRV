@@ -23,7 +23,7 @@ int main(){
     try{ 
         int modo=1; // modo=1-> entrenar; modo=0-> ejecutar normal; //Prueba creación de los puntos recarga
 
-        if(modo==1){
+        if(modo==0){
             //int funHash=0;
             unsigned long tam[]={numero,10580};
             std::vector<int> datosPR={37,38, 3, 4, 15, 15};
@@ -57,9 +57,14 @@ int main(){
             Cliente *pCli= eco.buscarCliente(dniCli);
             
             
-            std::cout << "\nCliente: " << pCli->GetDni() << " Situado en: " << 
+            std::cout << "\nCliente: " << pCli->GetDni()
+                    <<"   Cuyo nombre es: "<<pCli->GetNombre()<<std::endl
+                    <<"El cual tiene la siguiente contraseña: "<<pCli->GetPass()<<std::endl
+                    <<"Situado en: " << 
                     pCli->getPosicion().GetLatitud() << "," <<
                     pCli->getPosicion().GetLongitud() << std::endl;
+            
+            
             
             //5) Localizar la moto cercana
             //Moto* motoCerCli = eco.LocMotoCercana(pCli->getPosicion());
