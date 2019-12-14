@@ -24,6 +24,19 @@ EcoCityMoto::EcoCityMoto(const string& fileClientes, const string& fileMotos,uns
     
 }
 
+EcoCityMoto::EcoCityMoto(vector<int> vecPR, const string& fileClientes, const string& fileMotos, unsigned long tamTabla, int funcionHash):
+    idUltimo(0), clientes(tamTabla), motos(),recargaPuntos(vecPR[0],vecPR[1],vecPR[2],vecPR[3],vecPR[4],vecPR[5]) {
+    cargarMotos(fileMotos);
+    cargarClientes(fileClientes,funcionHash);
+    generarPuntosRecarga();
+
+    cout << "******Datos Malla: " << endl;
+    cout << "Numero de Puntos de Recarga: " << recargaPuntos.numElementos() << endl;
+    cout << "maximo Puntos por celda: " << recargaPuntos.maxElementosPorCelda() << endl;
+    cout << "media Puntos por celda: " << recargaPuntos.mediaElementosPorCelda() << endl;
+
+}
+
 EcoCityMoto::EcoCityMoto(const EcoCityMoto& orig):
     idUltimo(orig.idUltimo),motos(orig.motos),clientes(orig.clientes), recargaPuntos(orig.recargaPuntos){}
 
@@ -438,13 +451,15 @@ void EcoCityMoto::setMotos(vector<Moto> motos) {
 void EcoCityMoto::generarPuntosRecarga(){
     srand(1);
     int numdivi=1000;
+    int maxX=recargaPuntos.getXMax(),maxY=recargaPuntos.getYMax();
+    int minX=recargaPuntos.getXMin(),minY=recargaPuntos.getYMin();
     for (int i=0; i<300; i++){
         stringstream ss;
         ss<<i;
 
         float cayeSol[2];
-        int otromol=37000+rand()%(() -37000);
-        int otromol2=3000+rand()%(4000-3000);
+        int otromol=37000+rand()%((maxX*numdivi) - (minX*numdivi));
+        int otromol2=3000+rand()%((maxY*numdivi)-(minY*numdivi));
         cayeSol[0]= (float) (otromol)/numdivi;
         cayeSol[1]= (float) (otromol2)/numdivi;
         

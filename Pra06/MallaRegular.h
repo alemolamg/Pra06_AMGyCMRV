@@ -73,6 +73,18 @@ public:
     T buscarCercano (float x, float y); //ToDo: cambiar por otro
     float mediaElementosPorCelda();
     
+    
+    unsigned getNumElementosTotales() const;
+    float getTamCasillaY() const;
+    float getTamCasillaX() const;
+    float getYMax() const;
+    float getYMin() const;
+    float getXMax() const;
+    float getXMin() const;
+    
+    void setTamCasillaX(float tamCasillaX);
+    void setTamCasillaY(float tamCasillaY);
+    
     ///-------Sin Terminar -----------///
     
 };
@@ -223,6 +235,51 @@ template <class T>
 float MallaRegular<T>::mediaElementosPorCelda(){
     float media= (float)numElementos()/(numDivX*numDivY);
     return media;
+}
+
+template <class T>
+unsigned MallaRegular<T>::getNumElementosTotales() const {
+    return numElementosTotales;
+}
+
+template <class T>
+void MallaRegular<T>::setTamCasillaY(float tamCasillaY) {
+    this->tamCasillaY = tamCasillaY;
+}
+
+template <class T>
+float MallaRegular<T>::getTamCasillaY() const {
+    return tamCasillaY;
+}
+
+template <class T>
+void MallaRegular<T>::setTamCasillaX(float tamCasillaX) {
+    this->tamCasillaX = tamCasillaX;
+}
+
+template <class T>
+float MallaRegular<T>::getTamCasillaX() const {
+    return tamCasillaX;
+}
+
+template <class T>
+float MallaRegular<T>::getYMax() const {
+    return yMax;
+}
+
+template <class T>
+float MallaRegular<T>::getYMin() const {
+    return yMin;
+}
+
+template <class T>
+float MallaRegular<T>::getXMax() const {
+    return xMax;
+}
+
+template <class T>
+float MallaRegular<T>::getXMin() const {
+    return xMin;
 }
 
 //virtual MallaRegular<T>::~MallaRegular(){}
