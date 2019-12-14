@@ -55,6 +55,10 @@ class MallaRegular {
     Casilla<T> *obtenerCasilla(float x, float y);
     std::vector<std::vector<Casilla<T> > >mallaR;
     unsigned numElementosTotales;
+    //----Funciones ---------//
+    
+    void setTamCasillaX(float tamCasillaX);
+    void setTamCasillaY(float tamCasillaY);
     
 public:
     MallaRegular(float minimoX, float maximoX, float minimoY, float maximoY,
@@ -72,6 +76,7 @@ public:
     bool fueraAmbito(float x, float y);
     T buscarCercano (float x, float y); //ToDo: cambiar por otro
     float mediaElementosPorCelda();
+    bool ajustarTamMalla(int nuevoDivD);
     
     
     unsigned getNumElementosTotales() const;
@@ -82,8 +87,11 @@ public:
     float getXMax() const;
     float getXMin() const;
     
-    void setTamCasillaX(float tamCasillaX);
-    void setTamCasillaY(float tamCasillaY);
+    
+    float getNumDivY() const;
+    float getNumDivX() const;
+    void setNumDivY(float numDivY);
+    void setNumDivX(float numDivX);
     
     ///-------Sin Terminar -----------///
     
@@ -244,6 +252,26 @@ void MallaRegular<T>::setTamCasillaY(float tamCasillaY) {
 }
 
 template <class T>
+float MallaRegular<T>::getNumDivY() const {
+    return numDivY;
+}
+
+template <class T>
+float MallaRegular<T>::getNumDivX() const {
+    return numDivX;
+}
+
+template <class T>
+void MallaRegular<T>::setNumDivY(float numDivY) {
+    this->numDivY = numDivY;
+}
+
+template <class T>
+void MallaRegular<T>::setNumDivX(float numDivX) {
+    this->numDivX = numDivX;
+}
+
+template <class T>
 float MallaRegular<T>::getTamCasillaY() const {
     return tamCasillaY;
 }
@@ -278,7 +306,15 @@ float MallaRegular<T>::getXMin() const {
     return xMin;
 }
 
-//virtual MallaRegular<T>::~MallaRegular(){}
+template <class T>
+bool MallaRegular<T>::ajustarTamMalla(int nuevoDivD){
+//    tamCasillaX((xMax-xMin)/numDivX)
+    setTamCasillaX((getXMax()- getXMin()) / getNumDivX()+nuevoDivD);
+    setTamCasillaY((getYMax()- getYMin()) / getNumDivY()+nuevoDivD);
+    setNumDivX(getNumDivX()+ nuevoDivD);
+    setNumDivY(getNumDivY()+ nuevoDivD);
+    return true; 
+}
 
 #endif /* MALLAREGULAR_H */
 
