@@ -30,6 +30,7 @@ private:
     void GuardarMotosItinerarios(const string& file); 
     void guardarClientesItinerarios(const string &fileName);
     void generarPuntosRecarga();
+    bool redispersarPuntosRecarga(); //No funciona
     vector<string> getVecDNICli();
     
     
