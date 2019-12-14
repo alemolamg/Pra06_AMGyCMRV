@@ -161,25 +161,22 @@ T MallaRegular<T>::buscarCercano(float x, float y){
     Casilla<T> *cas;
     int p=numDivX;
     
-    for (int k=1; k<numDivX; k++){
+    for (int num=1; num<numDivX; num++){
         int cont=0;     
-        for (float i=x-(tamCasillaX*k); i<x+(tamCasillaX*k); i=i+tamCasillaX){
-            for (float j=y-(tamCasillaY*k); j<y+(tamCasillaY*k); j=j+tamCasillaY){
-                if (i>=xMin && i<=xMax && j>=yMin && j<=yMax){
-                    //typename std::list<T>::iterator it;
+        for (float i=x-(tamCasillaX*num); i<x+(tamCasillaX*num); i=i+tamCasillaX)
+            for (float j=y-(tamCasillaY*num); j<y+(tamCasillaY*num); j=j+tamCasillaY)
+                if ((i>=xMin && i<=xMax) && (j>=yMin && j<=yMax)){
                     cas = obtenerCasilla(i,j);
                     cont+=cas->puntos.size();
                 }
-            }
-        }
         if (cont>0){
-            p=k+1;
+            p=num+1;
             break;
         }
     }
         
-        for (float i=x-(tamCasillaX); i<x+(tamCasillaX); i+=tamCasillaX){
-            for (float j=y-(tamCasillaY); j<y+(tamCasillaY); j=j+tamCasillaY){
+        for (float i=x-(tamCasillaX); i<x+(tamCasillaX); i+=tamCasillaX)
+            for (float j=y-(tamCasillaY); j<y+(tamCasillaY); j=j+tamCasillaY)
                 if (i>=xMin && i<=xMax && j>=yMin && j<=yMax){
                     typename std::list<T>::iterator it;
                     cas = obtenerCasilla(i,j);
@@ -191,9 +188,7 @@ T MallaRegular<T>::buscarCercano(float x, float y){
                             distancia=d;
                         }
                     }
-                }
-            }
-        }         
+                }      
  
     return cercano;
 }
