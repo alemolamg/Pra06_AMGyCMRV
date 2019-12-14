@@ -24,6 +24,19 @@ EcoCityMoto::EcoCityMoto(const string& fileClientes, const string& fileMotos,uns
     
 }
 
+EcoCityMoto::EcoCityMoto(vector<int> vecPR, const string& fileClientes, const string& fileMotos, unsigned long tamTabla, int funcionHash):
+    idUltimo(0), clientes(tamTabla), motos(),recargaPuntos(vecPR[0],vecPR[1],vecPR[2],vecPR[3],vecPR[4],vecPR[5]) {
+    cargarMotos(fileMotos);
+    cargarClientes(fileClientes,funcionHash);
+    generarPuntosRecarga();
+
+    cout << "******Datos Malla: " << endl;
+    cout << "Numero de Puntos de Recarga: " << recargaPuntos.numElementos() << endl;
+    cout << "maximo Puntos por celda: " << recargaPuntos.maxElementosPorCelda() << endl;
+    cout << "media Puntos por celda: " << recargaPuntos.mediaElementosPorCelda() << endl;
+
+}
+
 EcoCityMoto::EcoCityMoto(const EcoCityMoto& orig):
     idUltimo(orig.idUltimo),motos(orig.motos),clientes(orig.clientes), recargaPuntos(orig.recargaPuntos){}
 
