@@ -35,6 +35,7 @@ private:
     
 public:
     EcoCityMoto(const string &fileClientes="prueba.txt",const string &fileMotos="motos.txt",unsigned long tamTabla=10000,int funcionHash=0);
+    EcoCityMoto(vector<int> vecPR , const string &fileClientes="prueba.txt",const string &fileMotos="motos.txt",unsigned long tamTabla=10000,int funcionHash=0);
     EcoCityMoto(const EcoCityMoto& orig);
     
     unsigned GetIdUltimo() const;
