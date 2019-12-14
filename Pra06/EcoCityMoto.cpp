@@ -14,13 +14,18 @@ EcoCityMoto::EcoCityMoto(const string& fileClientes, const string& fileMotos,uns
     idUltimo(0), clientes(tamTabla), motos(),recargaPuntos(37,38, 3, 4, 20, 20){
     cargarMotos(fileMotos);
     cargarClientes(fileClientes,funcionHash);
-    
     generarPuntosRecarga();
+//    bool caye=redispersarPuntosRecarga();
+//    if (caye){
+//        cout<<"Malla redispersada"<<std::endl;
+//        cout<<"TamCasillaX = "<<recargaPuntos.getTamCasillaX() <<std::endl;
+//        cout<<"TamCasillaY = "<<recargaPuntos.getTamCasillaY() <<std::endl;
+//    }
 
-    cout << "******Datos Malla: " << endl;
-    cout << "Numero de Puntos de Recarga: " << recargaPuntos.numElementos() << endl;
-    cout << "maximo Puntos por celda: " << recargaPuntos.maxElementosPorCelda() << endl;
-    cout << "media Puntos por celda: " << recargaPuntos.mediaElementosPorCelda() << endl;
+    cout<<"Datos Malla: " << endl;
+    cout<<"Numero de Puntos de Recarga: " << recargaPuntos.numElementos() << endl;
+    cout<<"media Puntos por celda: " << recargaPuntos.mediaElementosPorCelda() << endl;
+    cout<<"maximo Puntos por celda: " << recargaPuntos.maxElementosPorCelda() << endl; 
     
 }
 
@@ -29,6 +34,12 @@ EcoCityMoto::EcoCityMoto(vector<int> vecPR, const string& fileClientes, const st
     cargarMotos(fileMotos);
     cargarClientes(fileClientes,funcionHash);
     generarPuntosRecarga();
+    bool caye=redispersarPuntosRecarga();
+    if (caye){
+        cout<<"Malla redispersada"<<std::endl;
+//        cout<<"TamCasillaX = "<<recargaPuntos.getTamCasillaX() <<std::endl;
+//        cout<<"TamCasillaY = "<<recargaPuntos.getTamCasillaY() <<std::endl;
+    }
 
     cout << "******Datos Malla: " << endl;
     cout << "Numero de Puntos de Recarga: " << recargaPuntos.numElementos() << endl;
@@ -466,6 +477,26 @@ void EcoCityMoto::generarPuntosRecarga(){
         UTM pos=UTM (cayeSol[0],cayeSol[1]);
         PuntoRecarga pr(ss.str(),pos.GetLatitud(),pos.GetLongitud());
         recargaPuntos.insertar(pos.GetLatitud(),pos.GetLongitud(),pr);
-        cout << "X: " << pos.GetLatitud()<< "Y: " << pos.GetLongitud()<<endl;
+       // cout << "X: " << pos.GetLatitud()<< "Y: " << pos.GetLongitud()<<endl;
     }
 }
+
+bool EcoCityMoto::redispersarPuntosRecarga() {
+    
+    if(!(recargaPuntos.maxElementosPorCelda()<5)){
+        std::cout<< "Recalculamos el número necesario de tamaño de casilla"<<std::endl; //paso
+        recargaPuntos.setTamCasillaX(recargaPuntos.getTamCasillaX()+1);
+        recargaPuntos.setTamCasillaY(recargaPuntos.getTamCasillaY()+1);
+        if(recargaPuntos.maxElementosPorCelda()<5){
+            cout<<"Malla redispersada"<<std::endl;
+            cout<<"TamCasillaX = "<<recargaPuntos.getTamCasillaX() <<std::endl;
+            cout<<"TamCasillaY = "<<recargaPuntos.getTamCasillaY() <<std::endl;
+            return true;
+        }else
+            redispersarPuntosRecarga(); // se llama de nuevo
+        
+    }else
+        std::cout<< "Está correcto"<<std::endl;
+        return false;   
+}
+
