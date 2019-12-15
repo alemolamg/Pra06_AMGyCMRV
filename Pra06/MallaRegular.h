@@ -51,7 +51,7 @@ class Casilla{
         
 template <class T>
 class MallaRegular {  
-    float xMin,xMax,yMin,yMax, tamCasillaX, tamCasillaY,numDivX,numDivY; //ToDo:: gestionar numDivisiones correctamente
+    float xMin,xMax,yMin,yMax, tamCasillaX, tamCasillaY,numDivX,numDivY;
     Casilla<T> *obtenerCasilla(float x, float y);
     std::vector<std::vector<Casilla<T> > >mallaR;
     unsigned numElementosTotales;
@@ -62,7 +62,7 @@ class MallaRegular {
     
 public:
     MallaRegular(float minimoX, float maximoX, float minimoY, float maximoY,
-            float numDivisionesX,float numDivisionesY);//ToDo: Tenemos que calcular el numero divisiones en el constructor, está por hacer
+            float numDivisionesX,float numDivisionesY);
     MallaRegular(float minimoX, float maximoX, float minimoY, float maximoY); // Calcula un tamaño para X e Y automaticamente
     MallaRegular(const MallaRegular& orig);
     virtual ~MallaRegular(){};
@@ -74,7 +74,7 @@ public:
     unsigned numElementos();
     unsigned maxElementosPorCelda(); 
     bool fueraAmbito(float x, float y);
-    T buscarCercano (float x, float y); //ToDo: cambiar por otro
+    T buscarCercano (float x, float y); 
     float mediaElementosPorCelda();
     bool ajustarTamMalla(int nuevoDivD);
     

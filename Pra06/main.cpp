@@ -104,25 +104,6 @@ int main(){
             
             //--------PRACTICA05-------------//
                        
-                        
-                        
-            //Realizar un itinerario con la moto localizada con duración válida para la carga de batería de la moto
-            std::cout << "Comienza Ruta n: " << eco.GetIdUltimo() << std::endl;
-            pCli->desbloquearMoto(motoCerCli);
-            motoCerCli->darAviso(); 
-            std::cout << "Desbloqueamos la Moto: " << motoCerCli->getId() << std::endl;
-            pCli->terminarTrayecto();
-            std::cout << "Fin de la Ruta: " << pCli->UltimoItinerario().GetFecha().cadena() <<
-                    ", Minutos: " << pCli->UltimoItinerario().GetMinutos() <<
-                    ", Id: " << pCli->UltimoItinerario().GetVehiculo()->getId() <<
-                    ", Pos Fin: " << pCli->UltimoItinerario().GetFin().GetLatitud() << "<-->" <<
-                    pCli->UltimoItinerario().GetFin().GetLongitud() << std::endl;
-            
-            // mostrar en el display estado moto
-                //motoCerCli->darAviso();
-                /// La función Moto::darAviso se ejecuta internamente en el Cliente::terminarTrayecto, 
-                /// asi no hace falta mostrarlo desde el main, porque el cliente ya no tiene la moto
-            
             // Borrar el cliente
             if(eco.eliminarCliente(clienteA.GetDni()))
                 cout<<"Cliente Borrado correctamente"<<std::endl;
@@ -144,7 +125,7 @@ int main(){
          }
 
                 
-     //Tratamiento de errores
+     ///--------Tratamiento de errores-------------///
      }catch (ErrorFechaIncorrecta &e){
             std::cerr << "Fecha Incorrecta: " << std::endl;
      }catch (std::runtime_error &e){ //std::ifstream::failure &e){

@@ -149,15 +149,12 @@ void Cliente::crearItinerario(int num, int idUltimo, UTM min, UTM max) {
  void Cliente::terminarTrayecto(){ 
      list<Itinerario>::iterator i=rutas.end();
      i--;
-   
         Fecha f1= i->GetFecha(); 
         Fecha f2;    
          
         int bateria=rand()%(int)i->GetVehiculo()->getPorcentajeBateria();
         if(bateria<=15){
-            i->GetVehiculo()->setStatus(SinBateria);
-            PuntoRecarga prc=(puntoRecargaMasCercano());
-            datosPuntoRecarga(&prc);
+            bool alemol=motoSinBateria(i);           
         };
         
         int minutos= (f2.verHora()*60 + f2.verMin())- (f1.verHora()*60 + f1.verMin()); 
@@ -240,3 +237,19 @@ void Cliente::datosPuntoRecarga(PuntoRecarga* puntoR) {
             ", se encuentra en la posición: ("<<
             puntoR->getX()<<","<<puntoR->getY()<<")"<<endl;
 }
+
+bool Cliente::motoSinBateria(list<Itinerario>::iterator i) {
+    
+    //a) busca el punto cercano
+    i->GetVehiculo()->setStatus(SinBateria);
+    i->GetVehiculo()->darAviso();
+    
+    //b) y c) recarga la moto
+    PuntoRecarga prc=(puntoRecargaMasCercano());
+    datosPuntoRecarga(&prc);
+    RecargarMoto(prc);
+                
+    //d) //ToDo: dudas sobre la 3
+            
+}
+
