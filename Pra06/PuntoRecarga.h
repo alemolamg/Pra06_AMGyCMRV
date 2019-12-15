@@ -20,13 +20,13 @@ public:
     
         virtual ~PuntoRecarga(){};
     
-   /* PuntoRecarga& operator=(const PuntoRecarga& orig){
+    PuntoRecarga& operator=(const PuntoRecarga& orig){
     if (this!=&orig){
         id=orig.id;
         posicion=orig.posicion;
     }
     return *this;
-}*/
+}
 
 
     std::string GetId() const {
