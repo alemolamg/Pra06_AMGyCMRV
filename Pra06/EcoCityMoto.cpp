@@ -459,12 +459,12 @@ void EcoCityMoto::setMotos(vector<Moto> motos) {
     this->motos = motos;
 }
 
-void EcoCityMoto::generarPuntosRecarga(){
+void EcoCityMoto::generarPuntosRecarga(int numPuntos){
     srand(1);
     int numdivi=1000;
     int maxX=recargaPuntos.getXMax(),maxY=recargaPuntos.getYMax();
     int minX=recargaPuntos.getXMin(),minY=recargaPuntos.getYMin();
-    for (int i=0; i<300; i++){
+    for (int i=0; i<numPuntos; i++){
         stringstream ss;
         ss<<i;
 
