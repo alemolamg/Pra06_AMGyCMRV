@@ -83,10 +83,13 @@ int main(){
             std::cout << "Moto mas cercana: " << motoCerCli->getId() << " situada en: " <<
             motoCerCli->getPosicion().GetLatitud() << "," << motoCerCli->getPosicion().GetLongitud() << std::endl;
             
+            //7) Modificar ahora la función EcoCityMoto::localizaMotosSinBateria()
+            //está en la funcion realizada.
             
             
             
-            //--------PRACTICA06-------------//
+            
+            //--------PRACTICA05-------------//
                        
                         
                         
