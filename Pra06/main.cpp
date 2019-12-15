@@ -12,6 +12,15 @@
 #include "EcoCityMoto.h"
 #include "PuntoRecarga.h"
 
+void mostrarInformacionCliente(const Cliente *cli) {
+    std::cout << "\n Cliente: " << cli->GetDni()
+                <<"   Cuyo nombre es: "<<cli->GetNombre()<<std::endl
+                <<"El cual tiene la siguiente contraseña: "<<cli->GetPass()<<std::endl
+                <<"Situado en: " << 
+                cli->getPosicion().GetLatitud() << "," <<
+                 cli->getPosicion().GetLongitud() << std::endl;
+}
+
 int main(){    
     unsigned long primo,numero=10000;
     float max=7, min=3;
@@ -21,9 +30,9 @@ int main(){
     setlocale(LC_ALL,"es_ES.UTF8"); 
     srand(time(0));
     try{ 
-        int modo=1; // modo=1-> entrenar; modo=0-> ejecutar normal; //Prueba creación de los puntos recarga
+        int modo=0; // modo=1-> entrenar; modo=0-> ejecutar normal; //Prueba creación de los puntos recarga
 
-        if(modo==1){
+        if(modo==0){
             //int funHash=0;
             unsigned long tam[]={numero,10580};
             std::vector<int> datosPR={37,38, 3, 4, 15, 15};
@@ -55,12 +64,9 @@ int main(){
             
             //4) Buscar el cliente creado
             Cliente *pCli= eco.buscarCliente(dniCli);
+            mostrarInformacionCliente(pCli);
             
-            
-            std::cout << "\nCliente: " << pCli->GetDni() << " Situado en: " << 
-                    pCli->getPosicion().GetLatitud() << "," <<
-                    pCli->getPosicion().GetLongitud() << std::endl;
-            
+                        
             //5) Localizar la moto cercana
             //Moto* motoCerCli = eco.LocMotoCercana(pCli->getPosicion());
             Moto* motoCerCli =pCli->buscarMotoCercana(); 
