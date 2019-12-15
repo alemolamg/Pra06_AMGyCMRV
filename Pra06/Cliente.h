@@ -66,6 +66,7 @@ public:
     void aumentapunto();
     void RecargarMoto(PuntoRecarga &Punto_Recarga);
     PuntoRecarga puntoRecargaMasCercano();
+    void datosPuntoRecarga(PuntoRecarga* puntoR);
     
     
     
