@@ -86,7 +86,20 @@ int main(){
             //7) Modificar ahora la función EcoCityMoto::localizaMotosSinBateria()
             //está en la funcion realizada.
             
+            //8) Realizar un itinerario ...
             
+            std::cout << "Comienza Ruta n: " << eco.GetIdUltimo() << std::endl;
+            pCli->desbloquearMoto(motoCerCli);
+            motoCerCli->darAviso(); 
+            std::cout << "Desbloqueamos la Moto: " << motoCerCli->getId() << std::endl;
+            pCli->terminarTrayecto();
+            
+            
+            std::cout << "Fin de la Ruta: " << pCli->UltimoItinerario().GetFecha().cadena() <<
+                    ", Minutos: " << pCli->UltimoItinerario().GetMinutos() <<
+                    ", Id: " << pCli->UltimoItinerario().GetVehiculo()->getId() <<
+                    ", Pos Fin: " << pCli->UltimoItinerario().GetFin().GetLatitud() << "<-->" <<
+                    pCli->UltimoItinerario().GetFin().GetLongitud() << std::endl;
             
             
             //--------PRACTICA05-------------//
@@ -96,7 +109,7 @@ int main(){
             //Realizar un itinerario con la moto localizada con duración válida para la carga de batería de la moto
             std::cout << "Comienza Ruta n: " << eco.GetIdUltimo() << std::endl;
             pCli->desbloquearMoto(motoCerCli);
-            motoCerCli->darAviso(); //esto es de la parte 7;
+            motoCerCli->darAviso(); 
             std::cout << "Desbloqueamos la Moto: " << motoCerCli->getId() << std::endl;
             pCli->terminarTrayecto();
             std::cout << "Fin de la Ruta: " << pCli->UltimoItinerario().GetFecha().cadena() <<
