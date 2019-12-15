@@ -14,7 +14,7 @@
 
 void mostrarInformacionCliente(const Cliente *cli) {
     std::cout << "\n Cliente: " << cli->GetDni()
-                <<"   Cuyo nombre es: "<<cli->GetNombre()<<std::endl
+                <<" Cuyo nombre es: "<<cli->GetNombre()<<std::endl
                 <<"El cual tiene la siguiente contraseña: "<<cli->GetPass()<<std::endl
                 <<"Situado en: " << 
                 cli->getPosicion().GetLatitud() << "," <<
@@ -32,7 +32,7 @@ int main(){
     setlocale(LC_ALL,"es_ES.UTF8"); 
     srand(time(0));
     try{ 
-        int modo=0; // modo=1-> entrenar; modo=0-> ejecutar normal; //Prueba creación de los puntos recarga
+        int modo=3; // modo=1-> entrenar; modo=0-> ejecutar normal; //Prueba creación de los puntos recarga
 
         if(modo==0){
             //int funHash=0;
@@ -63,23 +63,34 @@ int main(){
             //EcoCityMoto eco("clientes_v5.csv","motos2.txt",numero); 
             //EcoCityMoto eco("prueba.txt","motos2.txt",numero);
             
+            //2) probar tamaños de malla
+            //realizado en el entrenamiento
             
+            //3)Añadir a todos los clientes un número de puntos aleatorio entre 1 y 10
+            
+            
+            //4)Añadir un nuevo cliente que no exista previamente con coordenadas en Jaén.
             std::string dniCli="50617459W";
             Cliente clienteA("50617459W", "Alejandro Molero" , "antirrobo", "Universidad", 37.3, 38.4, &eco);
             eco.nuevoCliente(clienteA);
             
-            //4) Buscar el cliente creado
+            //5) Localizar el cliente anterior dado su DNI y mostrar toda la información del cliente
             Cliente *pCli= eco.buscarCliente(dniCli);
             mostrarInformacionCliente(pCli);
             
-                        
-            //5) Localizar la moto cercana
-            //Moto* motoCerCli = eco.LocMotoCercana(pCli->getPosicion());
+            //6) Localizar la moto cercana y mostrar información
             Moto* motoCerCli =pCli->buscarMotoCercana(); 
             std::cout << "Moto mas cercana: " << motoCerCli->getId() << " situada en: " <<
             motoCerCli->getPosicion().GetLatitud() << "," << motoCerCli->getPosicion().GetLongitud() << std::endl;
             
-            //6)Realizar un itinerario con la moto localizada con duración válida para la carga de batería de la moto
+            
+            
+            
+            //--------PRACTICA06-------------//
+                       
+                        
+                        
+            //Realizar un itinerario con la moto localizada con duración válida para la carga de batería de la moto
             std::cout << "Comienza Ruta n: " << eco.GetIdUltimo() << std::endl;
             pCli->desbloquearMoto(motoCerCli);
             motoCerCli->darAviso(); //esto es de la parte 7;
@@ -91,28 +102,28 @@ int main(){
                     ", Pos Fin: " << pCli->UltimoItinerario().GetFin().GetLatitud() << "<-->" <<
                     pCli->UltimoItinerario().GetFin().GetLongitud() << std::endl;
             
-            //7) mostrar en el display estado moto
+            // mostrar en el display estado moto
                 //motoCerCli->darAviso();
                 /// La función Moto::darAviso se ejecuta internamente en el Cliente::terminarTrayecto, 
                 /// asi no hace falta mostrarlo desde el main, porque el cliente ya no tiene la moto
             
-            //8) Borrar el cliente
+            // Borrar el cliente
             if(eco.eliminarCliente(clienteA.GetDni()))
                 cout<<"Cliente Borrado correctamente"<<std::endl;
             else{
                 cout<<"Cliente no borrado"<<std::endl;
                 throw invalid_argument ("Main.cpp: parte8:: cliente no borrado");
             }
-            //9) insertar el mismo cliente de nuevo
+            // insertar el mismo cliente de nuevo
             bool alemol=eco.nuevoCliente(clienteA); 
             if (!alemol)
                 cout<<"Cliente no añadido correctamente"<<std::endl;
             
-            //10) Eliminar 1000 clientes y redispersar si es necesario
+            // Eliminar 1000 clientes y redispersar si es necesario
             eco.borraTodosLosClientes(1000); 
             eco.redispersarClientes();
             
-            //11) volver a cargar los ficheros como en la practica 4...
+            // volver a cargar los ficheros como en la practica 4...
             
          }
 
