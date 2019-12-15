@@ -232,6 +232,4 @@ void Cliente::decrementapunto(){
     
      PuntoRecarga Cliente::puntoRecargaMasCercano(){
         return acceso->puntoRecargaCercano(*this);
-     }
-
-
+}

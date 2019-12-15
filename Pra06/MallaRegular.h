@@ -188,7 +188,8 @@ T MallaRegular<T>::buscarCercano(float x, float y){
                             distancia=d;
                         }
                     }
-                }      
+                }
+
  
     return cercano;
 }
