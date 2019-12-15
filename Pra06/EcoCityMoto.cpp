@@ -15,12 +15,12 @@ EcoCityMoto::EcoCityMoto(const string& fileClientes, const string& fileMotos,uns
     cargarMotos(fileMotos);
     cargarClientes(fileClientes,funcionHash);
     generarPuntosRecarga();
-//    bool caye=redispersarPuntosRecarga();
-//    if (caye){
-//        cout<<"Malla redispersada"<<std::endl;
+    bool caye=redispersarPuntosRecarga();
+    if (caye){
+        cout<<"Malla redispersada"<<std::endl;
 //        cout<<"TamCasillaX = "<<recargaPuntos.getTamCasillaX() <<std::endl;
 //        cout<<"TamCasillaY = "<<recargaPuntos.getTamCasillaY() <<std::endl;
-//    }
+    }
 
     cout<<"Datos Malla: " << endl;
     cout<<"Numero de Puntos de Recarga: " << recargaPuntos.numElementos() << endl;

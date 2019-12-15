@@ -189,6 +189,7 @@ T MallaRegular<T>::buscarCercano(float x, float y){
                         }
                     }
                 }
+
  
     return cercano;
 }
