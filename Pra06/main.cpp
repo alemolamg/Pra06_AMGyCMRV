@@ -26,6 +26,8 @@ int main(){
     float max=7, min=3;
     float tamX=max/(max-min);
     
+    std::vector<int> datosPR={37,38, 3, 4, 18, 18};
+    
     cout<<tamX<<std::endl;
     setlocale(LC_ALL,"es_ES.UTF8"); 
     srand(time(0));
@@ -35,7 +37,7 @@ int main(){
         if(modo==0){
             //int funHash=0;
             unsigned long tam[]={numero,10580};
-            std::vector<int> datosPR={37,38, 3, 4, 18, 18};
+//            std::vector<int> datosPR={37,38, 3, 4, 18, 18};
             
              //cout<<"\nCargamos el archivo con el numero: "<< tam[0]<<" funHash num: 0 " <<std::endl;
                     EcoCityMoto ecoEntrena(datosPR,"clientes_v2.csv","motos.txt",tam[0],0); //Prueba creación de los puntos recarga
@@ -52,12 +54,16 @@ int main(){
              
              
          }else{
+            
+            //1)Crear de forma aleatoria 300 puntos de recarga
+            
             cout << "Creando Eco.... Comienzo de lectura de ficheros " << endl;   
-            EcoCityMoto eco("clientes_v2.csv","motos.txt",numero); 
+            EcoCityMoto eco("clientes_v2.csv","motos.txt",numero); // Se crean en el constructor por defecto de EcoCityMoto
+            
             //EcoCityMoto eco("clientes_v5.csv","motos2.txt",numero); 
             //EcoCityMoto eco("prueba.txt","motos2.txt",numero);
             
-            //1) Añadir un nuevo cliente, rango (latitud, longitud): (37, 3) - (38, 4) 
+            
             std::string dniCli="50617459W";
             Cliente clienteA("50617459W", "Alejandro Molero" , "antirrobo", "Universidad", 37.3, 38.4, &eco);
             eco.nuevoCliente(clienteA);

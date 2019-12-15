@@ -29,7 +29,7 @@ private:
     void crearItinerarios(int num,const UTM &min,const UTM &max);
     void GuardarMotosItinerarios(const string& file); 
     void guardarClientesItinerarios(const string &fileName);
-    void generarPuntosRecarga();
+    void generarPuntosRecarga(int numPuntos=300);
     bool redispersarPuntosRecarga(); //No funciona
     vector<string> getVecDNICli();
     
