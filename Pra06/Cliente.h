@@ -46,6 +46,7 @@ public:
     Moto* buscarMotoCercana();
     void desbloquearMoto(Moto* m);
     void terminarTrayecto();
+    bool motoSinBateria(list<Itinerario>::iterator i);
     
     Itinerario& UltimoItinerario() ;
     
