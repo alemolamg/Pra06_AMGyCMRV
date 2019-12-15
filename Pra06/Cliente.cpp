@@ -156,6 +156,8 @@ void Cliente::crearItinerario(int num, int idUltimo, UTM min, UTM max) {
         int bateria=rand()%(int)i->GetVehiculo()->getPorcentajeBateria();
         if(bateria<=15){
             i->GetVehiculo()->setStatus(SinBateria);
+            PuntoRecarga prc=(puntoRecargaMasCercano());
+            datosPuntoRecarga(&prc);
         };
         
         int minutos= (f2.verHora()*60 + f2.verMin())- (f1.verHora()*60 + f1.verMin()); 
@@ -232,4 +234,9 @@ void Cliente::decrementapunto(){
     
      PuntoRecarga Cliente::puntoRecargaMasCercano(){
         return acceso->puntoRecargaCercano(*this);
+}
+void Cliente::datosPuntoRecarga(PuntoRecarga* puntoR) {
+    cout<<"El punto recarga num: "<<puntoR->GetId()<<
+            ", se encuentra en la posición: ("<<
+            puntoR->getX()<<","<<puntoR->getY()<<")"<<endl;
 }
