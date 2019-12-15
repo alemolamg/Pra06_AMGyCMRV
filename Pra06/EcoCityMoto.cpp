@@ -399,7 +399,8 @@ vector<Moto*> EcoCityMoto::localizaMotosSinBateria() {
     vector<Moto*> vecMotos;
         for (int i=0; i<motos.size(); i++)
             if (motos[i].getPorcentajeBateria()<15)
-                vecMotos.push_back(&motos[i]);
+                if(recargaPuntos.fueraAmbito(motos[i].getPosicion().GetLatitud() , motos[i].getPosicion().GetLongitud()))
+                    vecMotos.push_back(&motos[i]);
         return vecMotos;
 }
 

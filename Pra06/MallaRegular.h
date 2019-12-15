@@ -216,12 +216,12 @@ bool MallaRegular<T>::fueraAmbito(float x, float y){ //ToDo: comprobar que funci
         for(unsigned j=y-tamCasillaY;j<y+tamCasillaY;j+=tamCasillaY){
             
             if( (i<=xMax && i>=xMin) && (j<=yMax && j>=yMin) ){
-                *cas=obtenerCasilla(i,j);
+                cas=obtenerCasilla(i,j);
                 if(cas->puntos.size()){
                     typename std::list<T>::iterator ite;
                     for (ite=cas->puntos.begin();ite!= cas->puntos.end();++ite){
-                         if ((*ite).getX()>=x-tamCasillaX && (*ite).getX()<=x+tamCasillaX
-                                 && (*ite).getY()>=y-tamCasillaY && (*ite).getY()<=y+tamCasillaY)
+                         if (((*ite).getX()>=x-tamCasillaX && (*ite).getX()<=x+tamCasillaX)
+                                 && ((*ite).getY()>=y-tamCasillaY && (*ite).getY()<=y+tamCasillaY))
                                 return false;
                     }
                 }
