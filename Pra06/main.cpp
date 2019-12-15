@@ -35,7 +35,7 @@ int main(){
         if(modo==0){
             //int funHash=0;
             unsigned long tam[]={numero,10580};
-            std::vector<int> datosPR={37,38, 3, 4, 15, 15};
+            std::vector<int> datosPR={37,38, 3, 4, 18, 18};
             
              //cout<<"\nCargamos el archivo con el numero: "<< tam[0]<<" funHash num: 0 " <<std::endl;
                     EcoCityMoto ecoEntrena(datosPR,"clientes_v2.csv","motos.txt",tam[0],0); //Prueba creación de los puntos recarga
