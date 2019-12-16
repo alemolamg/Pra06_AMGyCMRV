@@ -232,6 +232,7 @@ void Cliente::decrementapunto(){
      PuntoRecarga Cliente::puntoRecargaMasCercano(){
         return acceso->puntoRecargaCercano(*this);
 }
+     
 void Cliente::datosPuntoRecarga(PuntoRecarga* puntoR) {
     cout<<"El punto recarga num: "<<puntoR->GetId()<<
             ", se encuentra en la posición: ("<<
@@ -250,6 +251,6 @@ bool Cliente::motoSinBateria(list<Itinerario>::iterator i) {
     RecargarMoto(prc);
                 
     //d) //ToDo: dudas sobre la 3
-            
+    return true;
 }
 
