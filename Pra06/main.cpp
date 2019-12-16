@@ -28,7 +28,7 @@ int main(){
     
     std::vector<int> datosPR={37,38, 3, 4, 18, 18};
     
-    cout<<tamX<<std::endl;
+    //cout<<tamX<<std::endl;
     setlocale(LC_ALL,"es_ES.UTF8"); 
     srand(time(0));
     try{ 
@@ -90,7 +90,7 @@ int main(){
             
             std::cout << "Comienza Ruta n: " << eco.GetIdUltimo() << std::endl;
             pCli->desbloquearMoto(motoCerCli);
-            motoCerCli->darAviso(); 
+            motoCerCli->darAviso();  //ToDo: no muestra los datos
             std::cout << "Desbloqueamos la Moto: " << motoCerCli->getId() << std::endl;
             pCli->terminarTrayecto();
             
@@ -104,22 +104,22 @@ int main(){
             
             //--------PRACTICA05-------------//
                        
-            // Borrar el cliente
-            if(eco.eliminarCliente(clienteA.GetDni()))
-                cout<<"Cliente Borrado correctamente"<<std::endl;
-            else{
-                cout<<"Cliente no borrado"<<std::endl;
-                throw invalid_argument ("Main.cpp: parte8:: cliente no borrado");
-            }
-            // insertar el mismo cliente de nuevo
-            bool alemol=eco.nuevoCliente(clienteA); 
-            if (!alemol)
-                cout<<"Cliente no añadido correctamente"<<std::endl;
-            
-            // Eliminar 1000 clientes y redispersar si es necesario
-            eco.borraTodosLosClientes(1000); 
-            eco.redispersarClientes();
-            
+//            // Borrar el cliente
+//            if(eco.eliminarCliente(clienteA.GetDni()))
+//                cout<<"Cliente Borrado correctamente"<<std::endl;
+//            else{
+//                cout<<"Cliente no borrado"<<std::endl;
+//                throw invalid_argument ("Main.cpp: parte8:: cliente no borrado");
+//            }
+//            // insertar el mismo cliente de nuevo
+//            bool alemol=eco.nuevoCliente(clienteA); 
+//            if (!alemol)
+//                cout<<"Cliente no añadido correctamente"<<std::endl;
+//            
+//            // Eliminar 1000 clientes y redispersar si es necesario
+//            eco.borraTodosLosClientes(1000); 
+//            eco.redispersarClientes();
+//            
             // volver a cargar los ficheros como en la practica 4...
             
          }
