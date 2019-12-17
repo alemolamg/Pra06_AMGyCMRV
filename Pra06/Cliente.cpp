@@ -65,7 +65,7 @@ UTM Cliente::creaUTMAleatorio(const UTM &min,const UTM &max) {
     //int cont=0;
         double iniY,iniZ;
         srand(time(NULL));
-            int x=rand()%(10000),xx=rand()%(10000); 
+            int x=37000+rand()%(1000),xx=3000+rand()%(1000); 
             double y=(float) x/1000, z=(float) xx/1000;
             y=y*(max.GetLatitud()-min.GetLatitud())+min.GetLatitud();
             z=z*(max.GetLongitud()-min.GetLongitud())+min.GetLongitud();
@@ -114,14 +114,10 @@ void Cliente::crearItinerario(int num, int idUltimo, UTM min, UTM max) {
         Itinerario it2(idUltimo,posicion,finNuevo,fecha,minNuevo,m);
         m->setPosicion(finNuevo);
         rutas.push_back(it2);
-        
-        //std::cout<<"Mat moto:" << (m->getId()) <<" pos moto:"<< (m->getPosicion().latitud)<<m->getPosicion().longitud << std::endl;
-         
     } 
     
     for(int i=0;i<num;i++){
         motosVector[i]->seDesactiva();
-        //cout<<"Moto "<<i<<" Desactivada \n";
     }
 };
 
