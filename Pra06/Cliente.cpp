@@ -238,6 +238,10 @@ void Cliente::datosPuntoRecarga(PuntoRecarga* puntoR) {
             puntoR->getX()<<","<<puntoR->getY()<<")"<<endl;
 }
 
+int Cliente::getPuntos() const {
+    return puntos;
+}
+
 bool Cliente::motoSinBateria(list<Itinerario>::iterator i) {
     
     //a) busca el punto cercano
