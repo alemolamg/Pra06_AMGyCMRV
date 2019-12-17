@@ -161,7 +161,7 @@ void Cliente::crearItinerario(int num, int idUltimo, UTM min, UTM max) {
         i->SetMinutos(minutos);
         
         i->GetVehiculo()->setStatus(Bloqueado);
-        i->GetVehiculo()->darAviso();
+        i->GetVehiculo()->darAviso();//se desactiva tambien en la otra función
         
         i->GetVehiculo()->seDesactiva(); //bloquea la moto y la desvincula del cliente
 
@@ -182,7 +182,7 @@ void Cliente::cargaItinerario(const Itinerario& iti) {
 }
 
 std::string Cliente::getDisplay() const {
-    cout<<display;
+    cout<<display<<std::endl;
     return display;
 }
 
@@ -191,8 +191,8 @@ void Cliente::setRutas(list<Itinerario> rutaNueva) {
 }
 
 void Cliente::mostrarMensaje(string texto){
-    //display=" ";
     display=texto;
+    std::cout<<display<<std::endl;
 };
 
 
@@ -218,14 +218,16 @@ void Cliente::decrementapunto(){
     
     void Cliente::RecargarMoto(PuntoRecarga &Punto_Recarga){
         getMiMoto()->Recargar(&Punto_Recarga);
-        getMiMoto()->setStatus(Recargando);
+        getMiMoto()->setStatus(Recargando); // no pasa el valor correcto
         getMiMoto()->darAviso();
-        getDisplay();
+        getDisplay();                       //esto para que sirve??
+        getMiMoto()->setPorcentajeBateria(100);
         getMiMoto()->terminarRecarga();
         getMiMoto()->setStatus(Bloqueado);
-        getMiMoto()->darAviso();
-        getDisplay();
-        getMiMoto()->seDesactiva();
+        
+        getMiMoto()->darAviso();    // no pasa el valor correcto
+//        getDisplay();               //esto para que sirve??
+//        getMiMoto()->seDesactiva();
         
     }
     
@@ -235,7 +237,7 @@ void Cliente::decrementapunto(){
      
 void Cliente::datosPuntoRecarga(PuntoRecarga* puntoR) {
     cout<<"El punto recarga num: "<<puntoR->GetId()<<
-            ", se encuentra en la posición: ("<<
+            ", se encuentra en la posicion: ("<<
             puntoR->getX()<<","<<puntoR->getY()<<")"<<endl;
 }
 
@@ -246,9 +248,12 @@ bool Cliente::motoSinBateria(list<Itinerario>::iterator i) {
     i->GetVehiculo()->darAviso();
     
     //b) y c) recarga la moto
-    PuntoRecarga prc=(puntoRecargaMasCercano());
-    datosPuntoRecarga(&prc);
-    RecargarMoto(prc);
+    PuntoRecarga prc=(puntoRecargaMasCercano()); //ToDo: no encuentra el punto recarga
+    cout<<"El punto recarga num: "<<prc.GetId()<<
+            ", se encuentra en la posicion: ("<<
+            prc.getX()<<","<<prc.getY()<<")"<<endl;
+    //datosPuntoRecarga(&prc);
+    RecargarMoto(prc); 
                 
     //d) //ToDo: dudas sobre la 3
     return true;
