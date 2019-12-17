@@ -60,7 +60,7 @@ int main(){
             //1)Crear de forma aleatoria 300 puntos de recarga
             
             cout << "Creando Eco.... Comienzo de lectura de ficheros " << endl;   
-            EcoCityMoto eco("clientes_v2.csv","motos2.txt",numero); // Se crean en el constructor por defecto de EcoCityMoto
+            EcoCityMoto eco("clientes_v2.csv","motos.txt",numero); // Se crean en el constructor por defecto de EcoCityMoto
             
             //EcoCityMoto eco("clientes_v5.csv","motos2.txt",numero); 
             //EcoCityMoto eco("prueba.txt","motos2.txt",numero);
