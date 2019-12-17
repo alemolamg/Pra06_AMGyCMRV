@@ -58,7 +58,7 @@ int main(){
             //1)Crear de forma aleatoria 300 puntos de recarga
             
             cout << "Creando Eco.... Comienzo de lectura de ficheros " << endl;   
-            EcoCityMoto eco("clientes_v2.csv","motos.txt",numero); // Se crean en el constructor por defecto de EcoCityMoto
+            EcoCityMoto eco("clientes_v2.csv","motos2.txt",numero); // Se crean en el constructor por defecto de EcoCityMoto
             
             //EcoCityMoto eco("clientes_v5.csv","motos2.txt",numero); 
             //EcoCityMoto eco("prueba.txt","motos2.txt",numero);
@@ -90,8 +90,9 @@ int main(){
             
             std::cout << "Comienza Ruta n: " << eco.GetIdUltimo() << std::endl;
             pCli->desbloquearMoto(motoCerCli);
-            motoCerCli->darAviso();  //ToDo: no muestra los datos
+            motoCerCli->darAviso(); 
             std::cout << "Desbloqueamos la Moto: " << motoCerCli->getId() << std::endl;
+            motoCerCli->setPorcentajeBateria(15);
             pCli->terminarTrayecto();
             
             
