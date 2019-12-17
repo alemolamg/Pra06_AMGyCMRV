@@ -9,7 +9,7 @@
 #include <iostream>
 Cliente::Cliente(const Cliente& orig):
         dni(orig.dni),pass(orig.pass), nombre(orig.nombre),display(""),
-        direccion(orig.direccion),rutas(orig.rutas), acceso(orig.acceso),posicion(orig.posicion){}
+        direccion(orig.direccion),rutas(orig.rutas), acceso(orig.acceso),posicion(orig.posicion),puntos(orig.puntos){}
 
 bool Cliente::operator<(  Cliente& otro)const {
     return dni<otro.dni;
