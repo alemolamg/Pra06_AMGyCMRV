@@ -71,7 +71,7 @@ int main(){
             
             //4)Añadir un nuevo cliente que no exista previamente con coordenadas en Jaén.
             std::string dniCli="50617459W";
-            Cliente clienteA("50617459W", "Alejandro Molero" , "antirrobo", "Universidad", 37.3, 38.4, &eco);
+            Cliente clienteA("50617459W", "Alejandro Molero" , "antirrobo", "Universidad", 37.49, 3.78, &eco);
             eco.nuevoCliente(clienteA);
             
             //5) Localizar el cliente anterior dado su DNI y mostrar toda la información del cliente
