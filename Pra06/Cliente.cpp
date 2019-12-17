@@ -220,14 +220,11 @@ void Cliente::decrementapunto(){
         getMiMoto()->Recargar(&Punto_Recarga);
         getMiMoto()->setStatus(Recargando); // no pasa el valor correcto
         getMiMoto()->darAviso();
-        getDisplay();                       //esto para que sirve??
+        //getDisplay();                       //esto para que sirve??
         getMiMoto()->setPorcentajeBateria(100);
         getMiMoto()->terminarRecarga();
         getMiMoto()->setStatus(Bloqueado);
-        
         getMiMoto()->darAviso();    // no pasa el valor correcto
-//        getDisplay();               //esto para que sirve??
-//        getMiMoto()->seDesactiva();
         
     }
     
