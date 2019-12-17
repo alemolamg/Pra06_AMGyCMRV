@@ -18,7 +18,9 @@ void mostrarInformacionCliente(const Cliente *cli) {
                 <<"El cual tiene la siguiente contraseña: "<<cli->GetPass()<<std::endl
                 <<"Situado en: " << 
                 cli->getPosicion().GetLatitud() << "," <<
-                 cli->getPosicion().GetLongitud() << std::endl;
+                cli->getPosicion().GetLongitud() << std::endl<< 
+                "El cual tiene " <<
+                cli->getPuntos()<< " puntos"<<std::endl;
 }
 
 int main(){    
@@ -68,6 +70,7 @@ int main(){
             
             //3)Añadir a todos los clientes un número de puntos aleatorio entre 1 y 10
             
+            //realizado en el momento en el que creamos al cliente ya que lo creamos con un numero de puntos
             
             //4)Añadir un nuevo cliente que no exista previamente con coordenadas en Jaén.
             std::string dniCli="50617459W";
