@@ -156,7 +156,7 @@ unsigned MallaRegular<T>::numElementos(){
 
 template <class T>
 T MallaRegular<T>::buscarCercano(float x, float y){ 
-    T cercano;
+    T MasCerca;
     double distancia=99999999;
     Casilla<T> *cas;
     int p=numDivX;
@@ -184,14 +184,14 @@ T MallaRegular<T>::buscarCercano(float x, float y){
                     for (it=cas->puntos.begin();it!=cas->puntos.end();it++){
                         double d=sqrt(pow((*it).getX()-x,2)+pow((*it).getY()-y,2));
                         if (d<distancia){
-                            cercano=*it;
+                            MasCerca=*it;
                             distancia=d;
                         }
                     }
                 }
 
  
-    return cercano;
+    return MasCerca;
 }
 
 template <class T>

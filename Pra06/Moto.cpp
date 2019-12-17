@@ -89,7 +89,7 @@ void Moto::darAviso(){
         case 1: usadoPor->mostrarMensaje("Activada");break;
         case 2: usadoPor->mostrarMensaje("SinBateria");break;
         case 3: usadoPor->mostrarMensaje("Rota");break;
-        case 4: usadoPor->mostrarMensaje("Recarga");break; 
+        case 4: usadoPor->mostrarMensaje("Recargando");break; 
                
     }
 }
