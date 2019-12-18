@@ -34,7 +34,7 @@ int main(){
     setlocale(LC_ALL,"es_ES.UTF8"); 
     srand(time(0));
     try{ 
-        int modo=3; // modo=1-> entrenar; modo=0-> ejecutar normal; //Prueba creación de los puntos recarga
+        int modo=8; // modo=0-> entrenar; modo!0-> ejecutar normal; //Prueba creación de los puntos recarga
 
         if(modo==0){
             //int funHash=0;
@@ -60,15 +60,15 @@ int main(){
             //1)Crear de forma aleatoria 300 puntos de recarga
             
             cout << "Creando Eco.... Comienzo de lectura de ficheros " << endl;   
-            EcoCityMoto eco("clientes_v2.csv","motos.txt",numero); // Se crean en el constructor por defecto de EcoCityMoto
+            EcoCityMoto eco("clientes_v2.csv","motos2.txt",numero); // Se crean en el constructor por defecto de EcoCityMoto
+//            EcoCityMoto eco("prueba.txt","motos2.txt",numero);
             
-            //EcoCityMoto eco("clientes_v5.csv","motos2.txt",numero); 
-            //EcoCityMoto eco("prueba.txt","motos2.txt",numero);
             
             //2) probar tamaños de malla
             //realizado en el entrenamiento
             
             //3)Añadir a todos los clientes un número de puntos aleatorio entre 1 y 10
+            //Se realiza en el constructor
             
             //realizado en el momento en el que creamos al cliente ya que lo creamos con un numero de puntos
             
@@ -95,7 +95,7 @@ int main(){
             pCli->desbloquearMoto(motoCerCli);
             motoCerCli->darAviso(); 
             std::cout << "Desbloqueamos la Moto: " << motoCerCli->getId() << std::endl;
-            motoCerCli->setPorcentajeBateria(15);
+//            motoCerCli->setPorcentajeBateria(15);
             pCli->terminarTrayecto();
             
             

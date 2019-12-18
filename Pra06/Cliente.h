@@ -63,8 +63,8 @@ public:
     
     void mostrarMensaje(string texto);
     Moto* getMiMoto();
-    void decrementapunto();
-    void aumentapunto();
+    void decrementarPunto();
+    void incrementarPunto();
     void RecargarMoto(PuntoRecarga &Punto_Recarga);
     PuntoRecarga puntoRecargaMasCercano();
     void datosPuntoRecarga(PuntoRecarga* puntoR);
