@@ -18,8 +18,8 @@ EcoCityMoto::EcoCityMoto(const string& fileClientes, const string& fileMotos,uns
     bool caye=redispersarPuntosRecarga();
     if (caye){
         cout<<"Malla redispersada"<<std::endl;
-//        cout<<"TamCasillaX = "<<recargaPuntos.getTamCasillaX() <<std::endl;
-//        cout<<"TamCasillaY = "<<recargaPuntos.getTamCasillaY() <<std::endl;
+        cout<<"TamCasillaX = "<<recargaPuntos.getTamCasillaX() <<std::endl;
+        cout<<"TamCasillaY = "<<recargaPuntos.getTamCasillaY() <<std::endl;
     }
 
     cout<<"Datos Malla: " << endl;
@@ -37,8 +37,8 @@ EcoCityMoto::EcoCityMoto(vector<int> vecPR, const string& fileClientes, const st
     bool caye=redispersarPuntosRecarga();
     if (caye){
         cout<<"Malla redispersada"<<std::endl;
-//        cout<<"TamCasillaX = "<<recargaPuntos.getTamCasillaX() <<std::endl;
-//        cout<<"TamCasillaY = "<<recargaPuntos.getTamCasillaY() <<std::endl;
+        cout<<"TamCasillaX = "<<recargaPuntos.getTamCasillaX() <<std::endl;
+        cout<<"TamCasillaY = "<<recargaPuntos.getTamCasillaY() <<std::endl;
     }
 
     cout << "******Datos Malla: " << endl;
@@ -114,7 +114,8 @@ void EcoCityMoto::cargarMotos(string fileNameMotos){
                 motos.push_back(moto);
                 
                 //comprobacion lectura
-               //std::cout << moto.getId() << ";" << moto.getPosicion().latitud <<std::endl;            
+               std::cout << moto.getId() << ";" << moto.getPosicion().GetLatitud()
+                       <<";"<< moto.getPosicion().GetLongitud()<<std::endl;            
             }              
             getline(fe, linea);     //Toma una línea del fichero
         }    
@@ -478,7 +479,7 @@ void EcoCityMoto::generarPuntosRecarga(int numPuntos){
         UTM pos=UTM (cayeSol[0],cayeSol[1]);
         PuntoRecarga pr(ss.str(),pos.GetLatitud(),pos.GetLongitud());
         recargaPuntos.insertar(pos.GetLatitud(),pos.GetLongitud(),pr);
-       // cout << "X: " << pos.GetLatitud()<< "Y: " << pos.GetLongitud()<<endl;
+        cout << "X: " << pos.GetLatitud()<< "Y: " << pos.GetLongitud()<<endl;
     }
 }
 

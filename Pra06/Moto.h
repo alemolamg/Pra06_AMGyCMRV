@@ -18,7 +18,7 @@ enum tipoEstado{Bloqueado,Activo,SinBateria,Rota,Recargando};
 
 class Moto {
 public:
-    Moto(tipoEstado status=Bloqueado,string _id="",double dlat=0.0,double dlon=0.0 );
+    Moto(tipoEstado status=Bloqueado,string _id="",double dlat=37.1,double dlon=3.1 );
     Moto(const Moto& orig);
     virtual ~Moto();
     

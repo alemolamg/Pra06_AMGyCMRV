@@ -65,10 +65,10 @@ UTM Cliente::creaUTMAleatorio(const UTM &min,const UTM &max) {
     //int cont=0;
         double iniY,iniZ;
         srand(time(NULL));
-            int x=37000+rand()%(1000),xx=3000+rand()%(1000); 
+            int x=37000+rand()%(38001-37000),xx=3000+rand()%(4001-3000); 
             double y=(float) x/1000, z=(float) xx/1000;
-            y=y*(max.GetLatitud()-min.GetLatitud())+min.GetLatitud();
-            z=z*(max.GetLongitud()-min.GetLongitud())+min.GetLongitud();
+//            y=y*(max.GetLatitud()-min.GetLatitud())+min.GetLatitud();
+//            z=z*(max.GetLongitud()-min.GetLongitud())+min.GetLongitud();
                 iniY=y;
                 iniZ=z;        
         return  UTM(iniY,iniZ);
@@ -151,7 +151,11 @@ void Cliente::crearItinerario(int num, int idUltimo, UTM min, UTM max) {
         int bateria=rand()%(int)i->GetVehiculo()->getPorcentajeBateria();
         if(bateria<=15){
             bool alemol=motoSinBateria(i);           
-        };
+        }else{
+            cout<<"No necesita recargar la bateria"<<endl;
+            this->decrementarPunto();
+        }
+            
         
         int minutos= (f2.verHora()*60 + f2.verMin())- (f1.verHora()*60 + f1.verMin()); 
         i->SetMinutos(minutos);
@@ -201,15 +205,19 @@ Moto* Cliente::getMiMoto() {
 
 
 
-void Cliente::decrementapunto(){
+void Cliente::decrementarPunto(){
     if(puntos>0){
         puntos--;
     }
 }
-    void Cliente::aumentapunto(){
+    void Cliente::incrementarPunto(){
         if(puntos<10){
             puntos++;
-        }
+        }else
+            cout<<"El cliente tiene los maximos puntos posibles, no se puede incrementar"<<endl;
+        
+        cout<<"El cliente "<<this->GetNombre()<<" tiene actualmente "
+                <<getPuntos()<<" puntos"<<endl;
     }
     
     void Cliente::RecargarMoto(PuntoRecarga &Punto_Recarga){
@@ -253,6 +261,8 @@ bool Cliente::motoSinBateria(list<Itinerario>::iterator i) {
     RecargarMoto(prc); 
                 
     //d) //ToDo: dudas sobre la 3
+    this->incrementarPunto();
+    
     return true;
 }
 
