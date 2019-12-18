@@ -152,6 +152,7 @@ void Cliente::crearItinerario(int num, int idUltimo, UTM min, UTM max) {
         if(bateria<=15){
             bool alemol=motoSinBateria(i);           
         }else{
+            cout<<"No necesita recargar la bateria"<<endl;
             this->decrementarPunto();
         }
             

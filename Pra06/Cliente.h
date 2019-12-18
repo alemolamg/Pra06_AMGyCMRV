@@ -27,7 +27,7 @@ public:
     
     Cliente(string _dni,string _nombre="", string _pass="", string _direccion="", double _latitud=0.0, double _longitud=0.0, EcoCityMoto *_ecoC=0,int _puntos=0):
     dni(_dni), pass(_pass), nombre(_nombre), direccion (_direccion),acceso(_ecoC),rutas() ,posicion (_latitud, _longitud),puntos(_puntos){}
-    Cliente(): nombre(""), dni(""), pass(""), rutas(), acceso(0), direccion(""),display(" ") ,posicion(UTM(0.0,0.0)),puntos(rand()%10){};
+    Cliente(): nombre(""), dni(""), pass(""), rutas(), acceso(0), direccion(""),display(" ") ,posicion(UTM(0.0,0.0)),puntos(1+rand()%9){};
     Cliente(const Cliente& orig);
     
     
