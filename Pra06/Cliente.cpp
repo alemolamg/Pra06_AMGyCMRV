@@ -207,7 +207,7 @@ Moto* Cliente::getMiMoto() {
 
 void Cliente::decrementarPunto(){
     puntos--;
-    if(puntos>0){
+    if(puntos=0){
         cout<<"El cliente "<<GetNombre()<<" no tiene más puntos";
     }
 }
