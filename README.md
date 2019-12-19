@@ -8,5 +8,6 @@ version 6.2: creación de clases nuevas para la práctica 06
 version 6.3 y 6.4: Implementación MallaRegular en EcoCityMoto
 
 version 6.6 y 6.7: Ajustando funciones todas las clases; pequeños errores
+versión 6.8: Creación main Pra06
 
-Trabajando en versión 6.8: Creación main Pra06
+Trabajando en versión 6.9: pequeños retoques, está terminado 
